@@ -2,9 +2,8 @@
     <html>
     <head>
         <style>
-            .screen_1 { background-color: rgba(255, 255, 255, 1); height: 100vh; width: 100vw; font-size: 12px; background-size:  auto; background-repeat: no-repeat; background-position: center center; margin-top: 0px; margin-bottom: 0px; margin-right: 0px; margin-left: 0px;  display:inline-block;overflow: hidden; flex: 0 0 auto;position: relative;border:0px solid rgba(255, 255, 255, 1);border-radius: 0px 0px 0px 0px;} 
- .rect { background-color: rgba(210, 33, 243, 1); height: 165.14834994875852px; width: 143.07369845478806px; box-shadow: none; font-size: 12px; background-size:  auto; background-repeat: no-repeat; background-position: center center; margin-top: 0px; margin-bottom: 0px; margin-right: 0px; margin-left: 0px;  display:inline-block;overflow: auto;border:0px solid rgba(255, 255, 255, 1);border-radius: 0px 0px 0px 0px;position: absolute;  top: 78.11869620871033px;  left: 40.958068776168695px;} 
- .row { background-color: rgba(255, 255, 255, 1); height: 120px; width: 120px; font-size: 12px; background-size:  auto; background-repeat: no-repeat; background-position: center center; margin-top: 0px; margin-bottom: 0px; margin-right: 0px; margin-left: 0px; white-space: nowrap;overflow-x: scroll;border:0px solid rgba(255, 255, 255, 1);border-radius: 0px 0px 0px 0px;position: absolute;  top: 270.70353660746156px;  left: 51.84292720812914px;} 
+            .screen { background-color: rgba(255, 255, 255, 1); height: 100vh; width: 100vw; font-size: 12px; background-size:  auto; background-repeat: no-repeat; background-position: center center; margin-top: 0px; margin-bottom: 0px; margin-right: 0px; margin-left: 0px;  display:inline-block;overflow: hidden; flex: 0 0 auto;position: relative;border:0px solid rgba(255, 255, 255, 1);border-radius: 0px 0px 0px 0px;} 
+ .circle { background-color: rgba(243, 33, 145, 1); height: 120px; width: 120px; box-shadow: none; font-size: 12px; background-size:  auto; background-repeat: no-repeat; background-position: center center; margin-top: 0px; margin-bottom: 0px; margin-right: 0px; margin-left: 0px;  display:inline-block;overflow: auto; border-radius: 50%;position: absolute;  top: 71.93203125px;  left: 49.05234375px;} 
 
             
            /* Hide scrollbars for Chrome, Safari, and Opera */
@@ -31,9 +30,8 @@
               outline: none;  
             }
             @media screen and (min-width: 600px) {
-              .screen_1 { background-color: rgba(255, 255, 255, 1); height: 100vh; width: 100vw; font-size: 12px; background-size:  auto; background-repeat: no-repeat; background-position: center center; margin-top: 0px; margin-bottom: 0px; margin-right: 0px; margin-left: 0px;  display:inline-block;overflow: hidden; flex: 0 0 auto;position: relative;border:0px solid rgba(255, 255, 255, 1);border-radius: 0px 0px 0px 0px;} 
- .rect { background-color: rgba(210, 33, 243, 1); height: 165.14834994875852px; width: 143.07369845478806px; box-shadow: none; font-size: 12px; background-size:  auto; background-repeat: no-repeat; background-position: center center; margin-top: 0px; margin-bottom: 0px; margin-right: 0px; margin-left: 0px;  display:inline-block;overflow: auto;border:0px solid rgba(255, 255, 255, 1);border-radius: 0px 0px 0px 0px;position: absolute;  top: 78.11869620871033px;  left: 40.958068776168695px;} 
- .row { background-color: rgba(255, 255, 255, 1); height: 120px; width: 120px; font-size: 12px; background-size:  auto; background-repeat: no-repeat; background-position: center center; margin-top: 0px; margin-bottom: 0px; margin-right: 0px; margin-left: 0px; white-space: nowrap;overflow-x: scroll;border:0px solid rgba(255, 255, 255, 1);border-radius: 0px 0px 0px 0px;position: absolute;  top: 270.70353660746156px;  left: 51.84292720812914px;} 
+              .screen { background-color: rgba(255, 255, 255, 1); height: 100vh; width: 100vw; font-size: 12px; background-size:  auto; background-repeat: no-repeat; background-position: center center; margin-top: 0px; margin-bottom: 0px; margin-right: 0px; margin-left: 0px;  display:inline-block;overflow: hidden; flex: 0 0 auto;position: relative;border:0px solid rgba(255, 255, 255, 1);border-radius: 0px 0px 0px 0px;} 
+ .circle { background-color: rgba(189, 189, 189, 1); height: 169.61953125px; width: 171.06562499999998px; box-shadow: none; font-size: 12px; background-size:  auto; background-repeat: no-repeat; background-position: center center; margin-top: 0px; margin-bottom: 0px; margin-right: 0px; margin-left: 0px;  display:inline-block;overflow: auto; border-radius: 50%;position: absolute;  top: 99.2109375px;  left: 199.07343749999998px;} 
 
             }
         </style>
@@ -538,34 +536,22 @@ sys.modules['ginni'] = ginni
 try:
     import ginni as g
     
-    rect = g.GinNode('rect')
+    def moveToCirca2(event):
+        g.moveto('screen_1')
     
-    async def add2row(event):
-        print('in row')
-        node = await g.create_widget_type('circle_1', 'row')
-        print('after row')
-        node.set_color('#ffaabb')
-    
-    rect.set_on_click(add2row)
+    circle1 = g.GinNode('circle')
+    circle1.set_on_click(moveToCirca2)
 except Exception:
    consolelogerror(traceback.format_exc())`);
     }
 </script>
 </head>
 <body onload="javascript:initPyodide()">
- <div class="screen_1" id="screen_1">
-             <div class="rect" >
+ <div class="screen" id="screen">
+             <div class="circle" >
         
         
       </div>
-               <div class="row" >
-          <div class="savrintersub_row" style="    display: flex; width: max-content; 
-      justify-content: flex-start;
-        align-items: flex-start;
-    ">
-            
-          </div>
-        </div>
       
   </div>
 </body>
