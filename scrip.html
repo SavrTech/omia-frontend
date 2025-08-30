@@ -1,559 +1,64 @@
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <style>
-            .screen { background-color: rgba(255, 255, 255, 1); height: 100vh; width: 100vw; font-size: 12px; background-size:  auto; background-repeat: no-repeat; background-position: center center; margin-top: 0px; margin-bottom: 0px; margin-right: 0px; margin-left: 0px;  display:inline-block;overflow: hidden; flex: 0 0 auto;position: relative;border:0px solid rgba(255, 255, 255, 1);border-radius: 0px 0px 0px 0px;} 
- .circle { background-color: rgba(243, 33, 145, 1); height: 120px; width: 120px; box-shadow: none; font-size: 12px; background-size:  auto; background-repeat: no-repeat; background-position: center center; margin-top: 0px; margin-bottom: 0px; margin-right: 0px; margin-left: 0px;  display:inline-block;overflow: auto; border-radius: 50%;position: absolute;  top: 71.93203125px;  left: 49.05234375px;} 
-
-            
-           /* Hide scrollbars for Chrome, Safari, and Opera */
-            *::-webkit-scrollbar {
-                display: none;
-            }
-           
-            html, body {
-                overflow-x: hidden; 
-                overflow-y: hidden; 
-            }
-            /* Hide scrollbars for IE, Edge, and Firefox */
-            * {
-                -ms-overflow-style: none;  /* IE and Edge */
-                scrollbar-width: none;  /* Firefox */
-                 image-rendering: pixelated;
-                 image-rendering: -moz-crisp-edges;          /* Firefox */
-                 image-rendering: -o-crisp-edges;            /* Opera */
-                 image-rendering: -webkit-optimize-contrast; /* Webkit (non-standard naming)*/
-                 -ms-interpolation-mode: nearest-neighbor; 
-            }
-            input:focus {
-              border: none;        
-              outline: none;  
-            }
-            @media screen and (min-width: 600px) {
-              .screen { background-color: rgba(255, 255, 255, 1); height: 100vh; width: 100vw; font-size: 12px; background-size:  auto; background-repeat: no-repeat; background-position: center center; margin-top: 0px; margin-bottom: 0px; margin-right: 0px; margin-left: 0px;  display:inline-block;overflow: hidden; flex: 0 0 auto;position: relative;border:0px solid rgba(255, 255, 255, 1);border-radius: 0px 0px 0px 0px;} 
- .circle { background-color: rgba(189, 189, 189, 1); height: 169.61953125px; width: 171.06562499999998px; box-shadow: none; font-size: 12px; background-size:  auto; background-repeat: no-repeat; background-position: center center; margin-top: 0px; margin-bottom: 0px; margin-right: 0px; margin-left: 0px;  display:inline-block;overflow: auto; border-radius: 50%;position: absolute;  top: 99.2109375px;  left: 199.07343749999998px;} 
-
-            }
-        </style>
-     <link rel="stylesheet" href="fontstyle.css"> 
-      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-      
-     <script src="chart.js"></script>
-
-     <script type="text/javascript" src="pyodide.js"></script>
-     
-         <script type="text/javascript">
-    async function initPyodide() {
-      // Initialize Pyodide
-      var url = 'http://localhost:63731/';
-      if(window.location.href.startsWith('http')){
-        url = window.location.href;
-      }
-      
-      let pyodide = await loadPyodide({ indexURL : url + '/pyorep/'});
-      await pyodide.loadPackage("micropip");
-      const micropip = pyodide.pyimport("micropip");
-      
-      
-      
-              pyodide.runPython(`import sys
-import types
-from js import document, console, window
-from pyodide.ffi import create_proxy
-import pyodide
-import random
-import ast
-import json
-
-ginni = types.ModuleType('ginni')
-idkey = 'savr_nwidid'
-
-
-class GinNode:
-    def __init__(self, id):
-        """Setup reference to widget. id must be a string which is the exact name of the widget in the json"""
-        self.id = id
-
-    def _get_doc(self):
-        doc = document
-        if type(self.id) == list:
-            for i in self.id:
-                if (type(i) == tuple):
-                    iframe = doc.getElementById(i[1])
-                    doc = iframe
-                else:
-                    return doc.querySelector('.' + i)
-            return doc
-        elif type(self.id) == tuple:
-            iframe = doc.getElementById(self.id[1])
-            doc = iframe
-            return doc
-        else:
-            return doc.querySelector('.' + self.id)
-
-    def set_text_context(self, text_content):
-        """Set the text content of a TEXT widget"""
-        self._get_doc().textContent = text_content
-
-    def get_text_context(self) -> str:
-        """Return the text content of a TEXT widget"""
-        return str(self._get_doc().textContent)
-
-    def get_value(self) -> str:
-        """Get the HTML content value of a widget"""
-        return str(self._get_doc().value)
-
-    def get_img_src(self) -> str:
-        """Get the image URL of a TEXT widget"""
-        return str(self._get_doc().src)
-
-    def set_img_src(self, src):
-        """Set the image URL of an IMAGE widget"""
-        self._get_doc().src = src
-
-    def set_background_img(self, src):
-        """Set the background image of an IMAGE widget"""
-        self._get_doc().style.backgroundImage = f"url('{src}')"
-
-    def set_position_type(self, position):
-        """Set the HTML position type of a widget. It could be 'relative', 'absolute' etc."""
-        self._get_doc().style.position = position
-
-    def get_background_img(self) -> str:
-        """Set the background image of a widget"""
-        doc = self._get_doc()
-        style = window.getComputedStyle(doc, False)
-        return str(style.backgroundImage)[5:-2]
-
-    def set_on_click(self, onclick_function):
-        """Set the on click function property of a widget. onclick_function must have 1 event parameter.
-        example:
-        import ginni as g
-
-        btn = g.GinNode('btn')
-        txt = g.GinNode('txt')
-
-        def btn_click_action(event):
-            txt.set_text_context('btn clicked')
-
-        btn.set_on_click(btn_click_action)
-        """
-        self.proxy_f = create_proxy(onclick_function)
-        self._get_doc().addEventListener('click', self.proxy_f)
-
-    def set_border_color(self, color):
-        """Set the border color of a widget. Color must be string of hexcode, e.g: #ffaabb"""
-        self._get_doc().style.borderColor = color
-
-    def set_color(self, color):
-        """Set the background color of a widget. color must be string of hexcode, e.g: #ffaabb"""
-        self._get_doc().style.backgroundColor = color
-
-    def set_text_color(self, color):
-        """Set the text color of a TEXT widget. color must be string of hexcode, e.g: #ffaabb"""
-        self._get_doc().style.color = color
-
-    def change_border_width(self, width):
-        """Set the border width of a widget. width must be string that includes the unit e.g '5px' """
-        self._get_doc().style.borderWidth = width
-
-
-    def set_visibility(self, is_visible):
-        """Set the visibility of a widget. is_visible must be a boolean of value True or False """
-        if is_visible:
-            visibility = 'block'
-        else:
-            visibility = 'none'
-        set_savr_visibility(self.id, visibility)
-
-    def set_width(self, width):
-        """Set the width of a widget. width must be string that includes the unit e.g '150px' """
-        self._get_doc().style.width = width
-
-    def set_height(self, height):
-        """Set the height of a widget. width must be string that includes the unit e.g '150px' """
-        self._get_doc().style.height = height
-
-    def get_width(self):
-        """Get the runtime width of a widget. width will include the unit e.g '150px' """
-        return self._get_doc().style.width
-
-    def get_height(self):
-        """Get the runtime height of a widget. width will include the unit e.g '150px' """
-        return self._get_doc().style.height
-
-    def set_left(self, left):
-        """Set the position of the widget from the left of the screen. left must include the unit e.g '150px' """
-        self._get_doc().style.left = left
-
-    def set_right(self, right):
-        """Set the position of the widget from the right of the screen. right must include the unit e.g '150px' """
-        self._get_doc().style.right = right
-
-    def set_top(self, top):
-        """Set the position of the widget from the top of the screen. top must include the unit e.g '150px' """
-        self._get_doc().style.top = top
-
-    def set_bottom(self, bottom):
-        """Set the position of the widget from the bottom of the screen. bottom must include the unit e.g '150px' """
-        self._get_doc().style.bottom = bottom
-
-    def set_marginLeft(self, marginLeft):
-        """Set the margin of the widget from the left of the parent widget. marginLeft must include the unit e.g '150px' """
-        self._get_doc().style.marginLeft = marginLeft
-
-    def set_marginTop(self, marginTop):
-        """Set the margin of the widget from the top of the parent widget. marginTop must include the unit e.g '150px' """
-        self._get_doc().style.marginTop = marginTop
-
-    def set_marginRight(self, marginRight):
-        """Set the margin of the widget from the right of the parent widget. marginRight must include the unit e.g '150px' """
-        self._get_doc().style.marginRight = marginRight
-
-    def set_marginBottom(self, marginBottom):
-        """Set the margin of the widget from the bottom of the parent widget. marginBottom must include the unit e.g '150px' """
-        self._get_doc().style.marginBottom = marginBottom
-
-    def remove(self):
-        """Destroy widget permanently and remove from screen"""
-        self._get_doc().remove()
-
-
-    def get_id(self):
-        if type(self.id) == list:
-            nid = [i for i in self.id if type(i) == tuple]
-            return nid
-        elif type(self.id) == tuple:
-            nid = [self.id]
-            return nid
-        given_id = self.id
-        try:
-            idlist = get(idkey + '_' + given_id)
-            return ast.literal_eval(idlist)
-        except:
-            pass
-
-    def get_parent_id(self):
-        if type(self.id) == list:
-            nid = [i for i in self.id if type(i) == tuple]
-            return nid
-        elif type(self.id) == tuple:
-            nid = [self.id]
-            return nid
-        return None
-
-    def render_chart(self, dataMap, chartType, chartName):
-        """Set the data for a CHART widget.
-        dataMap: Dictionary of x,y values of the data to be displayed
-        example:
-        stat = g.GinNode('stat')
-        dataMap = { 'Red': 12, 'Blue': 19, 'Yellow': 3, 'Green': 5 };
-        stat.render_chart(dataMap, 'pie', chartName='Dataset')
-        """
-        render2DChart(f"{dataMap}", chartType, self.id, chartName)
-
-    def set_dropdown_element(self, content):
-        """
-        Set a dropdown element with text content
-        :param content: text name of content.
-        :return:
-        """
-        iframe_template = f'<label for="savrintersub_{self.id}-toggle">{content}</label>'
-        randid = generate_random_string(10)
-        set_child_element(iframe_template, self.id, randid)
-        parent_id = GinNode(self.id).get_id()
-        nid = ('iframe', randid)
-        if parent_id != None:
-            nid = parent_id.append(nid)
-        return GinNode(nid)
-
-    def get_child(self, name):
-        """ Get a GinNode reference to the child widget contained within a widget.
-        USed especially when a widget is created at runtime"""
-
-        selid = '.' + name.replace(' ', '_')
-        childElements = self._get_doc().getElementsByTagName('*')
-
-        if len(childElements) == 0:
-            return None
-        else:
-            nid = name
-            if type(self.id) == list:
-                nid = [i for i in self.id if type(i) == tuple]
-                nid.append(name)
-            elif type(self.id) == tuple:
-                nid = [self.id, name]
-            return GinNode(nid)
-
-
-ginni.GinNode = GinNode
-
-
-def generate_random_string(str_size):
-    allowed_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
-    return ''.join(random.choice(allowed_chars) for x in range(str_size))
-
-
-def save_item(key, value):
-    """
-    Save the key/value pair of an item to local storage.
-    :param key: The key to be saved to local storage.
-    :param value: The value to be saved to local storage.
-    :return: null.
-    """
-    save(key, value)
-
-
-def remove_item(key):
-    """
-    Delete a key/value pair from local storage.
-    :param key: The key element to be deleted from local storage.
-    :return: null
-    """
-    remove(key)
-
-
-def get_item(key):
-    """
-    Get the value of a key from local storage.
-    :param key: The key element to be gotten from local storage.
-    :return: null
-    """
-    return get(key)
-
-
-async def create_widget_type(template_id, parent_id):
-    """
-    Creates a new widget that is a replica of the widget of name template_id make
-    replicated widget the child of the screen widget of name parent_id.
-    The children of the widget of name template_id will be created along with it
-    :param template_id: name of widget on canvas to be duplicated or recreated
-    :param parent_id: name of parent widget, which created widget will be a child of.
-    :return: a GinNode reference to the newly created widget. New widget is a container to the created widget
-     and all components of the new widget must be fetched with the GinNode.get_child(widget_name) function
-    """
-    iframe_template = get(template_id)
-    randid = generate_random_string(10)
-    create_element(iframe_template, parent_id, randid)
-    parent_id = GinNode(parent_id).get_id()
-    nid = ('iframe', randid)
-    if parent_id != None:
-        nid = parent_id.append(nid)
-    return GinNode(nid)
-
-
-def print(value):
-    """
-    Prints log to debugger console
-    :param value: Value to be printed to console
-    :return: null
-    """
-    consolelog(f"{value}")
-
-
-def printre(value):
-    """
-    Prints error log to console.
-    :param value: Value to be printed as error to console.
-    :return: null
-    """
-    consolelogerror(f"{value}")
-
-
-def moveto(value):
-    """
-    Navigate to a different screen at runtime. e.g g.moveto("Screen2")
-    :param value: Name of screen
-    :return: null
-    """
-    movetopage(f"{value}")
-    
-async def make_request(url, header=None, body=None, method='GET'):
-    """
-    Make a HTTP request to given URL
-    :param value: Name of screen
-    :return: {'status': statusCode, 'data': data };
-    """
-    return json.loads(await make_savr_request(url, header, body, method))
-    
-ginni.print = print
-ginni.printre = printre
-ginni.moveto = moveto
-ginni.create_widget_type = create_widget_type
-ginni.save_item = save_item
-ginni.get_item = get_item
-ginni.remove_item = remove_item
-ginni.make_request = make_request
-
-# Add module to sys modules
-sys.modules['ginni'] = ginni
-        `);
-        
-      
-      pyodide.globals.set("save", (key, value) => localStorage.setItem(key, value));
-      pyodide.globals.set("get", (key) => localStorage.getItem(key));
-      pyodide.globals.set("remove", (key) => localStorage.removeItem(key));
-      pyodide.globals.set("getHtmlFileContent", async (path) => {
-        try {
-          // Convert to string first (in case a number, object, etc. is passed)
-          path = String(path);
-          // Replace all spaces with underscores
-          path = path.split(' ').join('_');
-          // Ensure it ends with .html
-          if (!path.endsWith('.html')) {
-            path += '.html';
-          }
-          const response = await fetch(path);
-          if (!response.ok) {
-            throw new Error(`Failed to load file: ${response.status}`);
-          }
-          const content = await response.text();
-          return content;
-        } catch (error) {
-          console.error("Error fetching HTML:", error);
-          return null;
-        }
-      });
-      pyodide.globals.set("render2DChart", (dataMap, chartType, parentId, chartName='Dataset') => {
-      const json = dataMap
-        .replace(/'/g, '"')                 // Change all single quotes to double quotes
-        .replace(/([{,]s*)(w+)(s*:)/g, '$1"$2"$3');
-      const obj = JSON.parse(json);
-      const map = new Map(Object.entries(obj));
-      
-      const labels = [];
-      const data = [];
-      map.forEach((value, key) => {
-        labels.push(key);
-        data.push(value);
-      });
-      const parentContainer = document.getElementsByClassName(parentId)[0];
-      
-      const ctx = document.createElement('canvas'); 
-      parentContainer.replaceChildren(ctx);
-
-      ctx.id=('randid');
-      ctx.style = null;
-      let currentChart = null;
-
-      const config = {
-        type: chartType,
-        data: {
-          labels: labels,
-          datasets: [{
-            label: chartName,
-            data: data,
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false
-        }
-      };
-      
-      currentChart = new Chart(ctx.getContext('2d'), config);
-    });
-      pyodide.globals.set("create_element", (template, parent_id, randid) =>{
-        var parentContainer = document.getElementsByClassName(parent_id)[0];
-        if(!parentContainer){
-          parentContainer = document.body;
-        }else{
-          var temp = parentContainer.querySelector('.savrintersub_' + parent_id);
-          while (temp != null){
-            parentContainer = temp;
-            temp = parentContainer.querySelector('.savrintersub_' + parent_id);
-          }
-        }
-        if (parentContainer) {
-            // Create the iframe element
-            const iframe = document.createElement('div');
-            iframe.id=(randid);
-            iframe.style.position = 'relative';
-            iframe.style.flex = '0 0 auto';
-            iframe.innerHTML = template;
-            // Append the iframe to the parent container
-            parentContainer.appendChild(iframe);
-        } else {
-            console.log("Parent container not found!");
-        }
-      });
-      
-      pyodide.globals.set("set_child_element", (template_content, parent_id, randid) =>{
-        var parentContainer = document.getElementsByClassName(parent_id)[0];
-        if(!parentContainer){
-          parentContainer = document.body;
-        }else{
-          var temp = parentContainer.querySelector('.savrintersub_' + parent_id);
-          while (temp != null){
-            parentContainer = temp;
-            temp = parentContainer.querySelector('.savrintersub_' + parent_id);
-          }
-        }
-        if (parentContainer) {
-            // Create the iframe element
-            const iframe = document.createElement('div');
-            iframe.id=(randid);
-            iframe.style.position = 'relative';
-            iframe.style.flex = '0 0 auto';
-            iframe.innerHTML = template_content;
-            // Append the iframe to the parent container
-            parentContainer.appendChild(iframe);
-        } else {
-            console.log("Parent container not found!");
-        }
-      });
-      pyodide.globals.set("make_savr_request", async (url, header, body, method) =>{
-       try {
-          const response = await fetch(url, {
-            method: method,
-            headers: header,
-            body: body
-          });
-          const statusCode = response.status;
-          const data = await response.text();
-          return JSON.stringify({'status': statusCode, 'data': data });
-        } catch (error) {
-          // console.error('Fetch error:', error);
-          return JSON.stringify({'status': 'error', 'data': (error)});
-        }
-      });
-      pyodide.globals.set("set_savr_visibility",(parentId, visibility) => {
-        const parent = document.getElementsByClassName(parentId)[0];
-        if (!parent) return;
-        parent.style.display =  visibility;
-        const allDescendants = parent.querySelectorAll('*');
-        allDescendants.forEach(el => {
-          el.style.display = visibility; 
-        });
-      });
-      pyodide.globals.set("consolelog", (msg) => window.parent.postMessage(JSON.stringify({'ginni_console': msg}), '*'));
-      pyodide.globals.set("consolelogerror", (msg) => window.parent.postMessage(JSON.stringify({'ginni_console_error': msg}), '*'));
-      pyodide.globals.set("movetopage", (msg)  =>{window.parent.postMessage(JSON.stringify({'ginni_new_page': msg}), '*'); window.location.href = msg.replace(" ", "_")+".html";});
-      
-      // Run Python code
-      pyodide.runPython(`consolelog('ginniPageLoadMarker')`);
-      pyodide.runPython(`import traceback
-try:
-    import ginni as g
-    
-    def moveToCirca2(event):
-        g.moveto('screen_1')
-    
-    circle1 = g.GinNode('circle')
-    circle1.set_on_click(moveToCirca2)
-except Exception:
-   consolelogerror(traceback.format_exc())`);
-    }
-</script>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Project Collaboration Invite</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body onload="javascript:initPyodide()">
- <div class="screen" id="screen">
-             <div class="circle" >
-        
-        
-      </div>
-      
-  </div>
+<body style="margin:0; padding:0; font-family: Arial, sans-serif; background-color: #1e1e1e;">
+  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+      <td align="center" style="padding: 20px;">
+        <table border="0" cellpadding="0" cellspacing="0" width="600" style="background-color: #2b2b2b; border-radius: 8px; overflow: hidden; color: #ffffff;">
+
+          <!-- Logo -->
+          <tr>
+            <td align="center" style="padding: 30px;">
+              <!-- Replace with your logo image -->
+              <img src="https://firebasestorage.googleapis.com/v0/b/savr-1c4c5.appspot.com/o/45625c9e-de89-4d12-ab22-443eb2584058.png?alt=media&token=d92fa72c-9005-4405-a3fe-7660b1416d65" 
+              alt="Logo" width="200" height="200" style="display: block; border-radius: 8px; filter: brightness(0) saturate(100%) invert(73%) sepia(37%) saturate(717%) hue-rotate(254deg) brightness(88%) contrast(92%);
+">
+            </td>
+          </tr>
+
+          <!-- Header -->
+          <tr>
+            <td align="center" style="padding: 10px 30px; font-size: 24px; font-weight: bold; color: #ef84fc;">
+              You're Invited to Collaborate
+            </td>
+          </tr>
+
+          <!-- Body -->
+          <tr>
+            <td style="padding: 30px; font-size: 16px; line-height: 1.6; color: #e0e0e0;">
+              <p>Hello,</p>
+
+              <p><strong>[Sender's Name]</strong> has invited you to join the project <strong>"[Project Name]"</strong>.</p>
+
+              <p>As a collaborator, you’ll gain access to project wireframes, resources, and tools. Click below to accept the invitation and get started.</p>
+            </td>
+          </tr>
+
+          <!-- CTA Button -->
+          <tr>
+            <td align="center" style="padding: 20px;">
+              <a href="[Invitation_Link]" style="background-color: #ef84fc; color: #1e1e1e; text-decoration: none; padding: 12px 24px; border-radius: 6px; font-weight: bold; display: inline-block;">
+                Accept Invitation
+              </a>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td align="center" style="padding: 30px 20px; font-size: 12px; color: #888888;">
+              This message was sent by Omia. If you didn’t expect this invite, you can safely ignore it.<br><br>
+              © 2025 Omia studio. All rights reserved.
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
 </body>
 </html>
-    
