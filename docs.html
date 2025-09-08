@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Markdown Viewer with Search & TOC</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+  :root {
+    --accent-purple: #6c63ff;
+    --accent-light: #dcdcff;
+    --text-primary: #2c2c2c;
+    --text-secondary: #555555;
+    --bg-sidebar: #f9f9fc;
+    --bg-content: #ffffff;
+    --border-color: #e0e0f7;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: var(--text-primary);
+    display: flex;
+    height: 100vh;
+    background: #fafafa;
+  }
+
+  #sidebar {
+    width: 320px;
+    background: var(--bg-sidebar);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    padding: 20px 24px;
+    overflow-y: auto;
+  }
+
+  #sidebar input {
+    padding: 12px 16px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1.5px solid var(--border-color);
+    outline-offset: 2px;
+    outline-color: var(--accent-purple);
+    transition: border-color 0.2s ease-in-out;
+    margin-bottom: 24px;
+  }
+  #sidebar input:focus {
+    border-color: var(--accent-purple);
+  }
+
+  #toc {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    flex-grow: 1;
+  }
+
+  #toc li {
+    cursor: pointer;
+    margin-left: calc((var(--level, 1) - 1) * 16px);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    transition: background-color 0.15s ease, color 0.15s ease;
+    user-select: none;
+  }
+  #toc li:hover {
+    background-color: var(--accent-light);
+    color: var(--accent-purple);
+  }
+  #toc li:active {
+    background-color: var(--accent-purple);
+    color: white;
+  }
+
+  #content {
+    flex-grow: 1;
+    overflow-y: auto;
+    background: var(--bg-content);
+    padding: 32px 48px;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--accent-purple);
+    font-weight: 600;
+    margin-top: 1.8em;
+    margin-bottom: 0.6em;
+    scroll-margin-top: 90px; /* for smooth scroll offset */
+  }
+
+  p {
+    margin: 0.8em 0 1.2em;
+    color: var(--text-primary);
+  }
+
+  pre {
+    background: #2d2d40;
+    color: #dcdcff;
+    border-radius: 8px;
+    padding: 20px;
+    overflow-x: auto;
+    font-size: 0.9rem;
+    font-family: 'Fira Code', monospace, monospace;
+    margin: 1.5em 0;
+    box-shadow: 0 2px 10px rgba(108, 99, 255, 0.15);
+  }
+
+  code {
+    background: var(--accent-light);
+    color: var(--accent-purple);
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    font-family: 'Fira Code', monospace, monospace;
+    font-size: 0.9rem;
+  }
+
+  blockquote {
+    border-left: 4px solid var(--accent-purple);
+    margin: 1.5em 0;
+    padding-left: 16px;
+    color: var(--accent-purple);
+    font-style: italic;
+    background-color: #f0f0ff;
+    border-radius: 4px;
+  }
+
+  hr {
+    border: none;
+    border-top: 1.5px solid var(--border-color);
+    margin: 2em 0;
+  }
+
+  a {
+    color: var(--accent-purple);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+
+  /* Scrollbar styling */
+  #sidebar::-webkit-scrollbar,
+  #content::-webkit-scrollbar {
+    width: 10px;
+  }
+  #sidebar::-webkit-scrollbar-thumb,
+  #content::-webkit-scrollbar-thumb {
+    background-color: var(--accent-light);
+    border-radius: 10px;
+  }
+  #sidebar::-webkit-scrollbar-track,
+  #content::-webkit-scrollbar-track {
+    background: transparent;
+  }
+</style>
+<!-- Marked.js -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<!-- Highlight.js -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/dracula.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>
+  hljs.configure({ignoreUnescapedHTML: true});
+</script>
+</head>
+<body>
+
+<div id="sidebar">
+  <input type="text" id="searchInput" placeholder="Search headings and content…" autocomplete="off" />
+  <ul id="toc"></ul>
+</div>
+
+<div id="content"></div>
+
+<script>
+  const markdown = `# 📘 Ginni Module Guide for OMIA Canvas
+
+Welcome! This guide walks you through how to enhance your design elements—referred to as **widgets**—by using the \`ginni\` module within the OMIA Canvas code pane. You’ll learn how to interact with widgets, store data, handle events, and more.
+
+---
+
+## 🔧 Getting Started
+
+First, import the \`ginni\` module:
+
+\`\`\`python
+import ginni as g
+\`\`\`
+
+This gives you access to all the tools you need to control and interact with widgets on the canvas.
+
+---
+
+## 💾 Local Storage
+
+You can store and retrieve data locally on the device or browser. This is useful for maintaining state across sessions.
+
+### Save an Item
+
+\`\`\`python
+g.save_item("KEY", "VALUE")
+\`\`\`
+
+### Retrieve an Item
+
+\`\`\`python
+value = g.get_item("KEY")
+\`\`\`
+
+---
+
+## 🔄 Screen Navigation
+
+### Move to a New Screen
+
+\`\`\`python
+g.moveto("SCREEN_NAME")
+\`\`\`
+
+---
+
+## 🖨️ Logging Output
+
+### Standard Print
+
+Print a message to the preview console:
+
+\`\`\`python
+g.print("Your message here")
+\`\`\`
+
+### Print Error
+
+Log an error message (displayed in red):
+
+\`\`\`python
+g.printre("Something went wrong")
+\`\`\`
+
+---
+
+## 🎛️ Working with Widgets
+
+To interact with any widget, first get a reference to it using the \`GinNode\` class:
+
+### Get a Widget Reference
+
+\`\`\`python
+node = g.GinNode("WIDGET_NAME")
+\`\`\`
+
+### Set Text Content
+
+\`\`\`python
+node.set_text_context("Your text here")
+\`\`\`
+
+### Get Text Content
+
+\`\`\`python
+text = node.get_text_context()
+\`\`\`
+
+### Get Value (For Input Fields)
+
+\`\`\`python
+value = node.get_value()
+\`\`\`
+
+### Set Visibility
+
+Show or hide a widget:
+
+\`\`\`python
+node.set_visibility(True)  # or False
+\`\`\`
+
+---
+
+## 🖼️ Working with Images
+
+### Get Image Source (URL)
+
+\`\`\`python
+img_url = node.get_img_src()
+\`\`\`
+
+### Set Image Source
+
+\`\`\`python
+node.set_img_src("https://example.com/image.jpg")
+\`\`\`
+
+---
+
+## 🖱️ Handling Events
+
+### Set onClick Handler
+
+You can define a function to run when a widget is clicked:
+
+\`\`\`python
+def handle_click(event):
+    g.print("Widget clicked!")
+
+node.set_on_click(handle_click)
+\`\`\`
+
+---
+
+## 📊 Bars & Charts
+
+To display data using pie, bar, or line charts:
+
+\`\`\`python
+stat = g.GinNode("stat")
+data = {
+    "Red": 12,
+    "Blue": 19,
+    "Yellow": 3,
+    "Green": 5
+}
+
+stat.render_chart(dataMap=data, chartType="pie", chartName="Dataset")
+\`\`\`
+
+> **Note**:
+>
+> * For \`line\` charts, the keys in \`dataMap\` must be numeric.
+> * For \`pie\` and \`bar\` charts, keys can be strings or numbers.
+
+---
+
+### Dropdown Menus
+
+Set options and attach actions to dropdown items:
+
+\`\`\`python
+dropdown = g.GinNode("text")
+
+option1 = dropdown.set_dropdown_element("dropdown1")
+option2 = dropdown.set_dropdown_element("dropdown2")
+
+def on_option1_click(event):
+    g.print("Option 1 selected")
+
+def on_option2_click(event):
+    g.print("Option 2 selected")
+
+option1.set_on_click(on_option1_click)
+option2.set_on_click(on_option2_click)
+\`\`\`
+
+---
+
+### Creating Widgets from Templates
+
+You can dynamically create widgets from a predefined template and add them to a parent widget:
+
+\`\`\`python
+node = await g.create_widget_type(template_id="my_template", parent_id="parent_widget_id")
+\`\`\`
+
+### Access Children in the New Widget
+
+\`\`\`python
+txt = node.get_child("txt1")
+txt.set_visibility(False)
+\`\`\`
+
+---
+
+### Displaying toast messages
+
+You can show toast messages at any point. A toast lasts for a fixed time of 3 seconds.
+
+\`\`\`python
+g.show_toast('Message')
+\`\`\`
+
+---
+
+### Display overlay 
+
+This may be helpful to prevent user input while running long background tasks.
+
+\`\`\`python
+g.show_overlay() # displays overlay in screen
+\`\`\`
+
+\`\`\`python
+g.close_overlay() # To close overlay
+\`\`\`
+
+---
+
+### Executing links 
+
+In case you need to open a new tab or open a download link.
+
+\`\`\`python
+g.open_link(link) # opens the link in a new tab
+\`\`\`
+
+---
+
+### Select media 
+
+In case you need to select file from the user's local machine.
+
+\`\`\`python
+btn = g.GinNode('BTN_ID')
+async def select_media(event):
+  media_data = await g.select_media()
+  g.print(media_data.name)
+  g.print(media_data.url)
+  g.print(media_data.size)
+  g.print(media_data.type)
+  g.print(media_data.lastModified)
+  
+btn.set_on_click(select_media)
+\`\`\`
+
+---
+
+### Upload file 
+
+In case you need to upload file from the user's local machine to public URL.
+
+\`\`\`python
+btn = g.GinNode('BTN_ID')
+
+async def select_media(event):
+  media_data = await g.select_media()
+  await g.upload_file(media_data.url, 'https://[PUBLIC_URL]')
+  
+btn.set_on_click(select_media)
+\`\`\`
+
+---
+
+## 🌐 Making HTTP Requests
+
+The \`ginni\` module includes a simple method to make HTTP requests:
+
+\`\`\`python
+result = await g.make_request(url, header, body, method="GET")
+\`\`\`
+
+### Response Structure
+
+* **Success**:
+
+  \`\`\`json
+  {
+    "status": 200,
+    "data": { ... }
+  }
+  \`\`\`
+
+* **Error**:
+
+  \`\`\`json
+  {
+    "status": "error",
+    "data": "Error message here"
+  }
+  \`\`\`
+
+---
+
+## ✅ Summary
+
+The \`ginni\` module allows you to:
+
+* Store and retrieve local data
+* Control navigation and logging
+* Dynamically update and interact with widgets
+* Handle user input and events
+* Visualize data through charts
+* Make simple HTTP requests
+
+Use this guide as your reference while building powerful, interactive experiences on the OMIA Canvas.
+`;
+
+  // Utility: slugify text for ids
+  function slugify(text) {
+    return text.toString().toLowerCase()
+      .replace(/\s+/g, '-')           // Replace spaces with -
+      .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+      .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+      .replace(/^-+/, '')             // Trim - from start of text
+      .replace(/-+$/, '');            // Trim - from end of text
+  }
+
+  // Parse markdown, generate HTML and TOC data structure
+  function parseMarkdownAndBuildTOC(md) {
+    // Render markdown to HTML
+    const contentDiv = document.createElement('div');
+    contentDiv.innerHTML = marked.parse(md);
+
+    // Assign IDs to headings and collect all headings in order
+    const headings = [];
+
+    // Flatten all nodes in document order (including those inside other containers)
+    function flattenElements(root) {
+      const elems = [];
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT, null, false);
+      let node;
+      while (node = walker.nextNode()) {
+        elems.push(node);
+      }
+      return elems;
+    }
+
+    const allElems = flattenElements(contentDiv);
+
+    for (const el of allElems) {
+      const tag = el.tagName.toLowerCase();
+      if (/h[1-6]/.test(tag)) {
+        if (!el.id) el.id = slugify(el.textContent);
+        headings.push({
+          id: el.id,
+          level: parseInt(tag[1], 10),
+          text: el.textContent,
+          element: el
+        });
+      }
+    }
+
+    return { contentDiv, headings };
+  }
+
+  // Render TOC as list with indentation
+  function renderTOC(headings, container, filterText = '') {
+    container.innerHTML = '';
+
+    // Filter headings by text (search in heading text + their content)
+    const filtered = filterText
+      ? headings.filter(h => {
+        const contentText = getAllContentText(h.element);
+        return h.text.toLowerCase().includes(filterText.toLowerCase()) ||
+               contentText.toLowerCase().includes(filterText.toLowerCase());
+      })
+      : headings;
+
+    for (const h of filtered) {
+      const li = document.createElement('li');
+      li.style.setProperty('--level', h.level);
+      li.textContent = h.text;
+      li.title = h.text;
+      li.dataset.targetId = h.id;
+      li.onclick = () => {
+        const headingInContent = document.getElementById(h.id);
+        if (headingInContent) {
+          headingInContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Highlight the selected item briefly
+          li.style.backgroundColor = 'var(--accent-purple)';
+          li.style.color = 'white';
+          setTimeout(() => {
+            li.style.backgroundColor = '';
+            li.style.color = '';
+          }, 500);
+        }
+      };
+      container.appendChild(li);
+    }
+  }
+
+  // Get all the text content from the heading element to the next heading of same or higher level
+  function getAllContentText(headingEl) {
+    let text = '';
+    let current = headingEl.nextSibling;
+    const currentLevel = parseInt(headingEl.tagName[1], 10);
+
+    while (current) {
+      if (current.nodeType === Node.ELEMENT_NODE) {
+        if (/H[1-6]/.test(current.tagName)) {
+          const nextLevel = parseInt(current.tagName[1], 10);
+          if (nextLevel <= currentLevel) break;
+        }
+        text += current.textContent + ' ';
+      } else if (current.nodeType === Node.TEXT_NODE) {
+        text += current.textContent + ' ';
+      }
+      current = current.nextSibling;
+    }
+
+    return text.trim();
+  }
+
+  // Highlight code blocks inside content container
+  function highlightCodeBlocks(container) {
+    container.querySelectorAll('pre code').forEach(block => {
+      hljs.highlightElement(block);
+    });
+  }
+
+  // Main setup
+  const { contentDiv, headings } = parseMarkdownAndBuildTOC(markdown);
+  const contentContainer = document.getElementById('content');
+  contentContainer.appendChild(contentDiv);
+
+  highlightCodeBlocks(contentContainer);
+
+  const tocContainer = document.getElementById('toc');
+  renderTOC(headings, tocContainer);
+
+  const searchInput = document.getElementById('searchInput');
+  searchInput.addEventListener('input', () => {
+    const val = searchInput.value.trim();
+    renderTOC(headings, tocContainer, val);
+  });
+</script>
+
+</body>
+</html>
