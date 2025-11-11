@@ -12,32 +12,33 @@
   <style>
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #f8fafc;
-      color: #1a202c;
+      background-color: #0a0a0f;
+      color: #ffffff;
     }
     .gradient-text {
-      background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(90deg, #5544FF 0%, #764ba2 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
     .btn-primary {
-      background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(90deg, #5544FF 0%, #764ba2 100%);
       transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     }
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(102, 126, 234, 0.4);
+      box-shadow: 0 4px 10px rgba(85, 68, 255, 0.4);
     }
     .feature-card {
-      background-color: #ffffff;
+      background-color: #0f0f1a;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
       transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     }
     .feature-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 12px 24px rgba(85, 68, 255, 0.4);
     }
     .hero-white-bg {
-      background-color: #ffffff;
+      background-color: #0a0a0f;
     }
     /* Mobile menu animation */
     .mobile-menu {
@@ -54,20 +55,20 @@
 <body class="antialiased">
 
   <!-- Header -->
-  <header class="bg-white shadow-sm py-4 px-6 md:px-12">
+  <header class="bg-[#0f0f1a] shadow-lg py-4 px-6 md:px-12">
     <nav class="container mx-auto flex justify-between items-center">
       <div class="flex items-center space-x-3">
         <a href="index.html">
           <img src="omialogo.png" alt="Omia Studio Logo" class="h-40 w-auto rounded-lg">
         </a>
-        <span class="text-2xl font-bold text-gray-800">Omia Studio</span>
+        <span class="text-2xl font-bold text-white">Omia Studio</span>
       </div>
 
       <!-- Desktop Menu -->
       <div class="hidden md:flex space-x-6">
-        <a href="#features" class="text-gray-600 hover:text-indigo-600 font-medium">Features</a>
-        <a href="#how-it-works" class="text-gray-600 hover:text-indigo-600 font-medium">How it Works</a>
-        <a href="#contact" class="text-gray-600 hover:text-indigo-600 font-medium">Contact</a>
+        <a href="#features" class="text-gray-200 hover:text-[#5544FF] font-medium">Features</a>
+        <a href="#how-it-works" class="text-gray-200 hover:text-[#5544FF] font-medium">How it Works</a>
+        <a href="#contact" class="text-gray-200 hover:text-[#5544FF] font-medium">Contact</a>
       </div>
 
       <a href="https://omia.pro/app" class="hidden md:block btn-primary text-white px-6 py-2 rounded-lg font-semibold shadow-md hover:shadow-lg">
@@ -75,7 +76,7 @@
       </a>
 
       <!-- Mobile menu button -->
-      <button id="menu-btn" class="md:hidden text-gray-600 focus:outline-none">
+      <button id="menu-btn" class="md:hidden text-gray-200 focus:outline-none">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -86,9 +87,9 @@
 
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="mobile-menu md:hidden mt-4 space-y-4 px-6">
-      <a href="#features" class="block text-gray-600 hover:text-indigo-600 font-medium">Features</a>
-      <a href="#how-it-works" class="block text-gray-600 hover:text-indigo-600 font-medium">How it Works</a>
-      <a href="#contact" class="block text-gray-600 hover:text-indigo-600 font-medium">Contact</a>
+      <a href="#features" class="block text-gray-200 hover:text-[#5544FF] font-medium">Features</a>
+      <a href="#how-it-works" class="block text-gray-200 hover:text-[#5544FF] font-medium">How it Works</a>
+      <a href="#contact" class="block text-gray-200 hover:text-[#5544FF] font-medium">Contact</a>
       <a href="https://omia.pro/app" class="block btn-primary text-white px-6 py-2 rounded-lg font-semibold shadow-md hover:shadow-lg">
         Get Started
       </a>
@@ -96,23 +97,23 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="hero-white-bg text-gray-800 py-20 px-6 md:px-12 text-center rounded-b-3xl shadow-xl">
+  <section class="hero-white-bg text-white py-20 px-6 md:px-12 text-center rounded-b-3xl shadow-2xl">
     <div class="container mx-auto max-w-4xl">
       <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
         Unleash Your Creativity with <span class="gradient-text">Omia Studio</span>
       </h1>
-      <p class="text-lg md:text-xl mb-8 opacity-75">
-Because your frontend should be the easiest part of your stack
+      <p class="text-lg md:text-xl mb-8 text-gray-200">
+        Because your frontend should be the easiest part of your stack
       </p>
       <a href="https://omia.pro/app" class="btn-primary text-white px-8 py-3 rounded-xl font-bold text-lg shadow-xl hover:shadow-2xl">
         Start Building for Free
       </a>
-      <p class="mt-4 text-sm opacity-70">No credit card required</p>
+      <p class="mt-4 text-sm text-gray-300">No credit card required</p>
     </div>
   </section>
 
   <!-- Features Section -->
-  <section id="features" class="py-16 px-6 md:px-12 bg-gray-50">
+  <section id="features" class="py-16 px-6 md:px-12 bg-[#050508]">
   <div class="container mx-auto">
     <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 gradient-text">
       Features That Empower Your Vision
@@ -121,58 +122,58 @@ Because your frontend should be the easiest part of your stack
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
        
         <!-- Feature Card 1 -->
-        <div class="feature-card p-8 rounded-xl shadow-lg border border-gray-100 flex flex-col items-center text-center">
+        <div class="feature-card p-8 rounded-xl shadow-lg flex flex-col items-center text-center">
           <div class="bg-indigo-100 p-4 rounded-full mb-6">
             <svg class="w-12 h-12 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
             </svg>
           </div>
-          <h3 class="text-2xl font-semibold text-gray-800 mb-4">Visual Canvas Editor</h3>
-          <p class="text-gray-600">Drag-and-drop components, arrange layouts, and see your design come to life in real-time. No coding required to get started.</p>
+          <h3 class="text-2xl font-semibold text-white mb-4">Visual Canvas Editor</h3>
+          <p class="text-gray-200">Drag-and-drop components, arrange layouts, and see your design come to life in real-time. No coding required to get started.</p>
         </div>
 
         <!-- Feature Card 2 -->
-        <div class="feature-card p-8 rounded-xl shadow-lg border border-gray-100 flex flex-col items-center text-center">
+        <div class="feature-card p-8 rounded-xl shadow-lg flex flex-col items-center text-center">
           <div class="bg-purple-100 p-4 rounded-full mb-6">
             <svg class="w-12 h-12 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-1.25-3M15 10V5.25A2.25 2.25 0 0012.75 3h-1.5A2.25 2.25 0 009 5.25V10M16.5 15H7.5a2.25 2.25 0 00-2.25 2.25V21l3-3 3 3 3-3 3 3v-3.75A2.25 2.25 0 0016.5 15z"/>
             </svg>
           </div>
-          <h3 class="text-2xl font-semibold text-gray-800 mb-4">Intelligent AI Co-Pilot</h3>
-          <p class="text-gray-600">Generate code snippets, suggest design improvements, and automate repetitive tasks with our integrated AI.</p>
+          <h3 class="text-2xl font-semibold text-white mb-4">Intelligent AI Co-Pilot</h3>
+          <p class="text-gray-200">Generate complete apps, wireframes, and designs from simple prompts. AI creates full layouts, suggests improvements, and automates your workflow instantly.</p>
         </div>
 
         <!-- Feature Card 3 -->
-        <div class="feature-card p-8 rounded-xl shadow-lg border border-gray-100 flex flex-col items-center text-center">
+        <div class="feature-card p-8 rounded-xl shadow-lg flex flex-col items-center text-center">
           <div class="bg-green-100 p-4 rounded-full mb-6">
             <svg class="w-12 h-12 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
             </svg>
           </div>
-          <h3 class="text-2xl font-semibold text-gray-800 mb-4">Build for Any Device</h3>
-          <p class="text-gray-600">Export your creations as responsive web apps, mobile apps (iOS/Android), or desktop games with a single click.</p>
+          <h3 class="text-2xl font-semibold text-white mb-4">Build for Any Device</h3>
+          <p class="text-gray-200">Export your creations as responsive web apps, mobile apps (iOS/Android), or desktop games with a single click.</p>
         </div>
 
           <!-- Feature Card 4: Team Collaboration -->
-        <div class="feature-card p-8 rounded-xl shadow-lg border border-gray-100 flex flex-col items-center text-center">
+        <div class="feature-card p-8 rounded-xl shadow-lg flex flex-col items-center text-center">
           <div class="bg-yellow-100 p-4 rounded-full mb-6">
             <svg class="w-12 h-12 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87M16 3.13a4 4 0 010 7.75M8 3.13a4 4 0 000 7.75"/>
             </svg>
           </div>
-          <h3 class="text-2xl font-semibold text-gray-800 mb-4">Seamless Team Collaboration</h3>
-          <p class="text-gray-600">Work together in real-time—designers and frontend developers can collaborate, share feedback, and build as a team for faster results.</p>
+          <h3 class="text-2xl font-semibold text-white mb-4">Seamless Team Collaboration</h3>
+          <p class="text-gray-200">Work together in real-time—designers and frontend developers can collaborate, share feedback, and build as a team for faster results.</p>
         </div>
 
         <!-- Feature Card 5: Natural Canvas for Designers & Developers -->
-        <div class="feature-card p-8 rounded-xl shadow-lg border border-gray-100 flex flex-col items-center text-center">
+        <div class="feature-card p-8 rounded-xl shadow-lg flex flex-col items-center text-center">
           <div class="bg-pink-100 p-4 rounded-full mb-6">
             <svg class="w-12 h-12 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 20l9-5-9-5-9 5 9 5zm0-10V4m0 0L3 9m9-5l9 5"/>
             </svg>
           </div>
-          <h3 class="text-2xl font-semibold text-gray-800 mb-4">Intuitive for Designers & Developers</h3>
-          <p class="text-gray-600">The canvas is built for everyone—designers and frontend developers can use it in the most natural, intuitive way, making collaboration and creation effortless.</p>
+          <h3 class="text-2xl font-semibold text-white mb-4">Intuitive for Designers & Developers</h3>
+          <p class="text-gray-200">The canvas is built for everyone—designers and frontend developers can use it in the most natural, intuitive way, making collaboration and creation effortless.</p>
         </div>
       </div>
       </div>
@@ -180,7 +181,7 @@ Because your frontend should be the easiest part of your stack
   </section>
 
   <!-- How It Works Section -->
-  <section id="how-it-works" class="py-16 px-6 md:px-12 bg-white">
+  <section id="how-it-works" class="py-16 px-6 md:px-12 bg-[#0a0a0f]">
     <div class="container mx-auto max-w-4xl">
       <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 gradient-text">
         Your Idea, Realized in 3 Simple Steps
@@ -192,9 +193,9 @@ Because your frontend should be the easiest part of your stack
             <img src="https://placehold.co/600x400/e0f2f7/00796b?text=Step+1:+Design+on+Canvas" alt="Design on Canvas" class="rounded-xl shadow-lg w-full">
           </div>
           <div class="md:w-1/2 text-center md:text-left">
-            <span class="text-5xl font-extrabold text-indigo-400 block mb-2">1.</span>
-            <h3 class="text-2xl font-semibold text-gray-800 mb-3">Design Visually on Our Canvas</h3>
-            <p class="text-gray-600">Start with a blank canvas or a template. Drag-and-drop UI elements, define interactions, and build your application's interface without writing a single line of code.</p>
+            <span class="text-5xl font-extrabold text-[#5544FF] block mb-2">1.</span>
+            <h3 class="text-2xl font-semibold text-white mb-3">Design Visually on Our Canvas</h3>
+            <p class="text-gray-200">Start with a blank canvas or a template. Drag-and-drop UI elements, define interactions, and build your application's interface without writing a single line of code.</p>
           </div>
         </div>
 
@@ -204,9 +205,9 @@ Because your frontend should be the easiest part of your stack
             <img src="https://placehold.co/600x400/e0f2f7/00796b?text=Step+2:+Enhance+with+AI" alt="Enhance with AI" class="rounded-xl shadow-lg w-full">
           </div>
           <div class="md:w-1/2 text-center md:text-right">
-            <span class="text-5xl font-extrabold text-purple-400 block mb-2">2.</span>
-            <h3 class="text-2xl font-semibold text-gray-800 mb-3">Enhance with AI-Powered Features</h3>
-            <p class="text-gray-600">Leverage Omia Studio's AI to suggest code, optimize designs, generate content, or even create game logic. Let AI handle the complexities while you focus on creativity.</p>
+            <span class="text-5xl font-extrabold text-[#5544FF] block mb-2">2.</span>
+            <h3 class="text-2xl font-semibold text-white mb-3">Enhance with AI-Powered Features</h3>
+            <p class="text-gray-200">Leverage Omia Studio's AI to suggest code, optimize designs, generate content, or even create game logic. Let AI handle the complexities while you focus on creativity.</p>
           </div>
         </div>
 
@@ -216,9 +217,9 @@ Because your frontend should be the easiest part of your stack
             <img src="https://placehold.co/600x400/e0f2f7/00796b?text=Step+3:+Deploy+Anywhere" alt="Deploy Anywhere" class="rounded-xl shadow-lg w-full">
           </div>
           <div class="md:w-1/2 text-center md:text-left">
-            <span class="text-5xl font-extrabold text-green-400 block mb-2">3.</span>
-            <h3 class="text-2xl font-semibold text-gray-800 mb-3">Deploy Across Platforms</h3>
-            <p class="text-gray-600">With a single click, publish your web app, generate native mobile builds for iOS and Android, or package your app for desktop platforms. Reach your audience wherever they are.</p>
+            <span class="text-5xl font-extrabold text-[#5544FF] block mb-2">3.</span>
+            <h3 class="text-2xl font-semibold text-white mb-3">Deploy Across Platforms</h3>
+            <p class="text-gray-200">With a single click, publish your web app, generate native mobile builds for iOS and Android, or package your app for desktop platforms. Reach your audience wherever they are.</p>
           </div>
         </div>
       </div>
@@ -226,33 +227,34 @@ Because your frontend should be the easiest part of your stack
   </section>
 
   <!-- Call to Action Section -->
-  <section class="bg-indigo-700 text-white py-16 px-6 md:px-12 text-center rounded-t-3xl shadow-xl">
+  <section class="bg-[#5544FF] text-white py-16 px-6 md:px-12 text-center rounded-t-3xl shadow-xl">
     <div class="container mx-auto max-w-3xl">
       <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Build Your Next Masterpiece?</h2>
-      <p class="text-lg md:text-xl mb-8 opacity-90">
+      <p class="text-lg md:text-xl mb-8">
         Join thousands of creators already bringing their ideas to life with Omia Studio.
       </p>
-      <a href="https://omia.pro/app" class="btn-primary text-white px-8 py-3 rounded-xl font-bold text-lg shadow-xl hover:shadow-2xl">
+      <a href="https://omia.pro/app" class="bg-white text-[#5544FF] px-8 py-3 rounded-xl font-bold text-lg shadow-xl hover:shadow-2xl hover:bg-gray-100">
         Get Started Now
       </a>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer id="contact" class="bg-gray-800 text-gray-300 py-10 px-6 md:px-12">
+  <footer id="contact" class="bg-[#000000] text-gray-300 py-10 px-6 md:px-12 shadow-inner">
     <div class="container mx-auto text-center">
       <div class="mb-6">
         <span class="text-2xl font-bold text-white">Omia Studio</span>
       </div>
       <div class="flex flex-wrap justify-center space-x-6 mb-6">
-        <a href="#features" class="hover:text-white">Features</a>
-        <a href="#how-it-works" class="hover:text-white">How it Works</a>
-        <a href="pricing.html" class="hover:text-white">Pricing</a>
-        <a href="blog.html" class="hover:text-white">Blog</a>
-        <a href="support.html" class="hover:text-white">Support</a>
-        <a href="support.html#contact-form" class="hover:text-white">Contact us</a>
+        <a href="#features" class="hover:text-[#5544FF]">Features</a>
+        <a href="#how-it-works" class="hover:text-[#5544FF]">How it Works</a>
+        <a href="pricing.html" class="hover:text-[#5544FF]">Pricing</a>
+        <a href="blog.html" class="hover:text-[#5544FF]">Blog</a>
+        <a href="support.html" class="hover:text-[#5544FF]">Support</a>
+        <a href="support.html#contact-form" class="hover:text-[#5544FF]">Contact us</a>
       </div>
       <p class="text-sm">&copy; 2025 Omia Studio. All rights reserved.</p>
+      <span class="text-xs text-gray-400">Omia Studio is operated and protected by SAVR Technologies.</span>
     </div>
   </footer>
 

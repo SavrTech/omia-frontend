@@ -12,47 +12,47 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* Dominant light background */
-            color: #1a202c; /* Dark text */
+            background-color: #0a0a0f;
+            color: #ffffff;
         }
         .gradient-text {
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(90deg, #5544FF 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .btn-primary {
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(90deg, #5544FF 0%, #764ba2 100%);
             transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
         }
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 4px 10px rgba(85, 68, 255, 0.4);
         }
         .card-shadow {
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
         }
         .card-border {
-            border: 1px solid #e2e8f0; /* Light gray border */
+            background-color: #0f0f1a;
         }
     </style>
 </head>
 <body class="antialiased">
 
     <!-- Header (Reused from Homepage) -->
-     <header class="bg-white shadow-sm py-4 px-6 md:px-12">
+     <header class="bg-[#0f0f1a] shadow-lg py-4 px-6 md:px-12">
     <nav class="container mx-auto flex justify-between items-center">
       <div class="flex items-center space-x-3">
         <a href="index.html">
           <img src="omialogo.png" alt="Omia Studio Logo" class="h-40 w-auto rounded-lg">
         </a>
-        <span class="text-2xl font-bold text-gray-800">Omia Studio</span>
+        <span class="text-2xl font-bold text-white">Omia Studio</span>
       </div>
 
       <!-- Desktop Menu -->
       <div class="hidden md:flex space-x-6">
-        <a href="index.html#features" class="text-gray-600 hover:text-indigo-600 font-medium">Features</a>
-        <a href="index.html#how-it-works" class="text-gray-600 hover:text-indigo-600 font-medium">How it Works</a>
-        <a href="index.html#contact" class="text-gray-600 hover:text-indigo-600 font-medium">Contact</a>
+        <a href="index.html#features" class="text-gray-200 hover:text-[#5544FF] font-medium">Features</a>
+        <a href="index.html#how-it-works" class="text-gray-200 hover:text-[#5544FF] font-medium">How it Works</a>
+        <a href="index.html#contact" class="text-gray-200 hover:text-[#5544FF] font-medium">Contact</a>
       </div>
 
       <a href="https://omia.pro/app" class="hidden md:block btn-primary text-white px-6 py-2 rounded-lg font-semibold shadow-md hover:shadow-lg">
@@ -81,76 +81,78 @@
   </header>
 
     <!-- Blog Hero Section -->
-    <section class="py-16 px-6 md:px-12 bg-white text-center rounded-b-3xl shadow-xl">
+        <!-- Blog Hero Section -->
+    <section class="py-16 px-6 md:px-12 bg-[#0a0a0f] text-center rounded-b-3xl shadow-2xl">
         <div class="container mx-auto max-w-4xl">
             <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-6 gradient-text">
                 Omia Studio Blog
             </h1>
-            <p class="text-lg md:text-xl text-gray-600 mb-8 opacity-90">
+            <p class="text-lg md:text-xl text-gray-200 mb-8 opacity-90">
                 Stay updated with the latest news, tutorials, and insights from the world of app development with OMIA.
             </p>
         </div>
     </section>
 
     <!-- Blog Posts Section -->
-    <section class="py-16 px-6 md:px-12 bg-gray-50">
+    <section class="py-16 px-6 md:px-12 bg-[#050508]">
         <div class="container mx-auto max-w-5xl">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Blog Post 1 -->
-                <div class="bg-white p-6 rounded-xl card-shadow card-border flex flex-col">
+                <div class="bg-[#0f0f1a] p-6 rounded-xl card-shadow flex flex-col">
                     <img src="https://placehold.co/400x250/e0f2f7/00796b?text=Medium" alt="AI in Development" class="rounded-lg mb-4 w-full h-auto">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">Introduction to Application Development with OMIA Studio</h3>
-                    <p class="text-gray-600 text-sm mb-4">
+                    <h3 class="text-2xl font-semibold text-white mb-2">Introduction to Application Development with OMIA Studio</h3>
+                    <p class="text-gray-400 text-sm mb-4">
                         <span class="font-medium">By Ajiri Gunn</span> | Sep, 2025
                     </p>
-                    <p class="text-gray-700 mb-4 flex-grow">
+                    <p class="text-gray-200 mb-4 flex-grow">
                         See how OMIA can speed up your projects, from code generation to intelligent design suggestions.
                     </p>
-                    <a href="https://medium.com/@ajirie98/introduction-to-application-development-with-omia-studio-21e54a08c6f1" class="text-indigo-600 font-medium hover:underline mt-auto">Read More &rarr;</a>
+                    <a href="https://medium.com/@ajirie98/introduction-to-application-development-with-omia-studio-21e54a08c6f1" class="text-[#5544FF] font-medium hover:underline mt-auto">Read More &rarr;</a>
                 </div>
 
                 <!-- Blog Post 2 -->
-                <div class="bg-white p-6 rounded-xl card-shadow card-border flex flex-col">
+                <div class="bg-[#0f0f1a] p-6 rounded-xl card-shadow flex flex-col">
                     <img src="https://placehold.co/400x250/e0f2f7/00796b?text=Medium" alt="Canvas Tips" class="rounded-lg mb-4 w-full h-auto">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">Building a Chat Application with OMIA Studio</h3>
-                    <p class="text-gray-600 text-sm mb-4">
+                    <h3 class="text-2xl font-semibold text-white mb-2">Building a Chat Application with OMIA Studio</h3>
+                    <p class="text-gray-400 text-sm mb-4">
                         <span class="font-medium">By Ajiri Gunn</span> | September, 2025
                     </p>
-                    <p class="text-gray-700 mb-4 flex-grow"> Learn how to add custom functionality to your Omia Studio projects using our intuitive Python libraries.
+                    <p class="text-gray-200 mb-4 flex-grow"> Learn how to add custom functionality to your Omia Studio projects using our intuitive Python libraries.
  </p>
-                    <a href="https://medium.com/@ajirie98/building-a-chat-application-with-omia-studio-03dc7a72d2f4" class="text-indigo-600 font-medium hover:underline mt-auto">Read More &rarr;</a>
+                    <a href="https://medium.com/@ajirie98/building-a-chat-application-with-omia-studio-03dc7a72d2f4" class="text-[#5544FF] font-medium hover:underline mt-auto">Read More &rarr;</a>
                 </div>
 
                 <!-- Blog Post 3 -->
-                <div class="bg-white p-6 rounded-xl card-shadow card-border flex flex-col">
+                <div class="bg-[#0f0f1a] p-6 rounded-xl card-shadow flex flex-col">
                     <img src="https://placehold.co/400x250/e0f2f7/00796b?text=Medium" alt="Python Power" class="rounded-lg mb-4 w-full h-auto">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">Introduction to UX Design with OMIA Studio</h3>
-                    <p class="text-gray-600 text-sm mb-4">
+                    <h3 class="text-2xl font-semibold text-white mb-2">Introduction to UX Design with OMIA Studio</h3>
+                    <p class="text-gray-400 text-sm mb-4">
                         <span class="font-medium">By Ajiri Gunn</span> | September, 2025
                     </p>
-                    <p class="text-gray-700 mb-4 flex-grow">
+                    <p class="text-gray-200 mb-4 flex-grow">
                         Get pro tips for building scalable designs with OMIA Studio.
                  </p>
-                    <a href="https://medium.com/@ajirie98/introduction-to-ux-design-with-omia-studio-c9aacf4708da" class="text-indigo-600 font-medium hover:underline mt-auto">Read More &rarr;</a>
+                    <a href="https://medium.com/@ajirie98/introduction-to-ux-design-with-omia-studio-c9aacf4708da" class="text-[#5544FF] font-medium hover:underline mt-auto">Read More &rarr;</a>
                 </div>
 
                 <!-- Blog Post 4 -->
-                <div class="bg-white p-6 rounded-xl card-shadow card-border flex flex-col">
+                <div class="bg-[#0f0f1a] p-6 rounded-xl card-shadow flex flex-col">
                     <img src="https://placehold.co/400x250/e0f2f7/00796b?text=Medium" alt="Game Development" class="rounded-lg mb-4 w-full h-auto">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">Dynamically Populating Lists with OMIA Studio</h3>
-                    <p class="text-gray-600 text-sm mb-4">
+                    <h3 class="text-2xl font-semibold text-white mb-2">Dynamically Populating Lists with OMIA Studio</h3>
+                    <p class="text-gray-400 text-sm mb-4">
                         <span class="font-medium">By Ajiri Gunn</span> | September, 2025
                     </p>
-                    <p class="text-gray-700 mb-4 flex-grow">
+                    <p class="text-gray-200 mb-4 flex-grow">
                         Learn tricks to build scalable apps in OMIA Studio.
                     </p>
-                    <a href="https://medium.com/@ajirie98/dynamically-populating-lists-with-omia-studio-c7f3780d1c30" class="text-indigo-600 font-medium hover:underline mt-auto">Read More &rarr;</a>
+                                        <a href="https://medium.com/@ajirie98/dynamically-populating-lists-with-omia-studio-c7f3780d1c30" class="text-[#5544FF] font-medium hover:underline mt-auto">Read More &rarr;</a>
                 </div>
 
-            
             </div>
         </div>
     </section>
+
+   
 
     <!-- Call to Action Section (Reused from Homepage) -->
     <section class="bg-indigo-700 text-white py-16 px-6 md:px-12 text-center rounded-t-3xl shadow-xl">
@@ -166,16 +168,16 @@
     </section>
 
     <!-- Footer (Reused from Homepage) -->
-    <footer id="contact" class="bg-gray-800 text-gray-300 py-10 px-6 md:px-12">
+    <footer id="contact" class="bg-[#000000] text-gray-300 py-10 px-6 md:px-12 shadow-inner">
         <div class="container mx-auto text-center">
             <div class="mb-6">
                 <span class="text-2xl font-bold text-white">Omia Studio</span>
             </div>
             <div class="flex flex-wrap justify-center space-x-6 mb-6">
-                <a href="index.html#features" class="hover:text-white">Features</a>
-                <a href="index.html#how-it-works" class="hover:text-white">How it Works</a>
-                <a href="pricing.html" class="hover:text-white">Pricing</a>
-                <a href="support.html" class="hover:text-white">Support</a>
+                <a href="index.html#features" class="hover:text-[#5544FF]">Features</a>
+                <a href="index.html#how-it-works" class="hover:text-[#5544FF]">How it Works</a>
+                <a href="pricing.html" class="hover:text-[#5544FF]">Pricing</a>
+                <a href="support.html" class="hover:text-[#5544FF]">Support</a>
             </div>
             <p class="text-sm">&copy; 2025 Omia Studio. All rights reserved.</p>
         </div>

@@ -12,47 +12,47 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* Dominant light background */
-            color: #1a202c; /* Dark text */
+            background-color: #0a0a0f;
+            color: #ffffff;
         }
         .gradient-text {
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(90deg, #5544FF 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .btn-primary {
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(90deg, #5544FF 0%, #764ba2 100%);
             transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
         }
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 4px 10px rgba(85, 68, 255, 0.4);
         }
         .card-shadow {
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
         }
         .card-border {
-            border: 1px solid #e2e8f0; /* Light gray border */
+            background-color: #0f0f1a;
         }
     </style>
 </head>
 <body class="antialiased">
 
     <!-- Header (Reused from Homepage) -->
-   <header class="bg-white shadow-sm py-4 px-6 md:px-12">
+   <header class="bg-[#0f0f1a] shadow-lg py-4 px-6 md:px-12">
     <nav class="container mx-auto flex justify-between items-center">
       <div class="flex items-center space-x-3">
         <a href="index.html">
           <img src="omialogo.png" alt="Omia Studio Logo" class="h-40 w-auto rounded-lg">
         </a>
-        <span class="text-2xl font-bold text-gray-800">Omia Studio</span>
+        <span class="text-2xl font-bold text-white">Omia Studio</span>
       </div>
 
       <!-- Desktop Menu -->
       <div class="hidden md:flex space-x-6">
-        <a href="index.html#features" class="text-gray-600 hover:text-indigo-600 font-medium">Features</a>
-        <a href="index.html#how-it-works" class="text-gray-600 hover:text-indigo-600 font-medium">How it Works</a>
-        <a href="index.html#contact" class="text-gray-600 hover:text-indigo-600 font-medium">Contact</a>
+        <a href="index.html#features" class="text-gray-200 hover:text-[#5544FF] font-medium">Features</a>
+        <a href="index.html#how-it-works" class="text-gray-200 hover:text-[#5544FF] font-medium">How it Works</a>
+        <a href="index.html#contact" class="text-gray-200 hover:text-[#5544FF] font-medium">Contact</a>
       </div>
 
       <a href="https://omia.pro/app" class="hidden md:block btn-primary text-white px-6 py-2 rounded-lg font-semibold shadow-md hover:shadow-lg">
@@ -81,28 +81,28 @@
   </header>
 
    <!-- Pricing Section -->
-    <section class="py-16 px-6 md:px-12 bg-white">
+    <section class="py-16 px-6 md:px-12 bg-[#0a0a0f]">
         <div class="container mx-auto max-w-5xl text-center">
             <h1 class="text-4xl md:text-5xl font-extrabold mb-6 gradient-text">
                 Simple & Transparent Pricing
             </h1>
-            <p class="text-lg md:text-xl text-gray-600 mb-12">
+            <p class="text-lg md:text-xl text-gray-200 mb-12">
                 Create and innovate without limits. Choose the plan that best fits your needs.
             </p>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 items-stretch">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 items-stretch">
 
                 <!-- Free Development Card -->
-                <div class="bg-white p-8 rounded-xl card-shadow card-border flex flex-col justify-between">
+                <div class="bg-[#0f0f1a] p-8 rounded-xl card-shadow flex flex-col justify-between">
                     <div>
-                        <h2 class="text-3xl font-bold text-gray-800 mb-4">Free Development</h2>
-                        <p class="text-gray-600 mb-6">
+                        <h2 class="text-3xl font-bold text-white mb-4">Free</h2>
+                        <p class="text-gray-200 mb-6">
                             Unleash your creativity and build amazing apps and games without any upfront cost.
                         </p>
-                        <div class="text-5xl font-extrabold text-indigo-600 mb-6">
-                            $0<span class="text-xl font-medium text-gray-500">/forever</span>
+                        <div class="text-5xl font-extrabold text-[#5544FF] mb-6">
+                            $0<span class="text-xl font-medium text-gray-400">/forever</span>
                         </div>
-                        <ul class="text-left text-gray-700 space-y-3 mb-8">
+                        <ul class="text-left text-gray-200 space-y-3 mb-8">
                             <li class="flex items-center">
                                 <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                                 Intuitive Visual Canvas Editor
@@ -110,6 +110,10 @@
                             <li class="flex items-center">
                                 <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                                 AI-Powered Design & Code Assistance
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Unlimited AI Prompts
                             </li>
                             <li class="flex items-center">
                                 <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
@@ -125,41 +129,54 @@
                             </li>
                             <li class="flex items-center">
                                 <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Export Web UI Code
+                                Export Web Code
                             </li>
                         </ul>
                     </div>
                     <a href="https://omia.pro/app#/profile" class="btn-primary text-white px-8 py-3 rounded-xl font-bold text-lg shadow-md hover:shadow-lg w-full">
-                        Start Developing for Free
+                        Get Started
                     </a>
                 </div>
 
-                <!-- Starter Plan Card -->
-                <div class="bg-white p-8 rounded-xl card-shadow card-border flex flex-col justify-between">
+                <!-- Pro Plan Card -->
+                <div class="bg-[#0f0f1a] p-8 rounded-xl card-shadow flex flex-col justify-between relative">
+                    <div class="absolute -top-4 right-4 bg-red-500 text-white px-4 py-1 rounded-full text-sm font-bold shadow-lg">
+                        52% OFF
+                    </div>
                     <div>
-                        <h2 class="text-3xl font-bold text-gray-800 mb-4">Starter Plan</h2>
-                        <p class="text-gray-600 mb-6">
-                            Perfect for individuals and small projects ready to go live.
+                        <h2 class="text-3xl font-bold text-white mb-4">Pro</h2>
+                        <p class="text-gray-200 mb-6">
+                            Perfect for individuals and teams ready to deploy live applications.
                         </p>
-                        <div class="text-5xl font-extrabold text-purple-600 mb-6">
-                            $25<span class="text-xl font-medium text-gray-500">/month</span>
+                        <div class="mb-6">
+                            <div class="text-2xl font-bold text-gray-500 line-through mb-2">
+                                $25
+                            </div>
+                            <div class="flex items-baseline gap-1">
+                                <span class="text-5xl font-extrabold text-purple-400">$11.99</span>
+                                <span class="text-sm font-medium text-gray-400">/project/mo</span>
+                            </div>
                         </div>
-                        <ul class="text-left text-gray-700 space-y-3 mb-8">
+                        <ul class="text-left text-gray-200 space-y-3 mb-8">
                             <li class="flex items-center">
                                 <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                All Free Development Features
+                                All Free Features
                             </li>
                             <li class="flex items-center">
                                 <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                3 Live Web App Deployments
+                                Unlimited AI Prompts
                             </li>
                             <li class="flex items-center">
                                 <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Unlimited Native Mobile App Builds
+                                Live Web Deployments
                             </li>
                             <li class="flex items-center">
                                 <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Unlimited Desktop Game Exports
+                                Unlimited Mobile App Builds
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Unlimited Desktop Exports
                             </li>
                             <li class="flex items-center">
                                 <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
@@ -167,53 +184,7 @@
                             </li>
                             <li class="flex items-center">
                                 <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Dedicated Support & Analytics
-                            </li>
-                            <li class="flex items-center">
-                                <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Multiple Projects Easily
-                            </li>
-                        </ul>
-                    </div>
-                    <a href="https://omia.pro/app#/profile" class="btn-primary text-white px-8 py-3 rounded-xl font-bold text-lg shadow-md hover:shadow-lg w-full">
-                        Get Starter Plan
-                    </a>
-                </div>
-
-                <!-- Pro Plan Card -->
-                <div class="bg-white p-8 rounded-xl card-shadow card-border flex flex-col justify-between">
-                    <div>
-                        <h2 class="text-3xl font-bold text-gray-800 mb-4">Pro Plan</h2>
-                        <p class="text-gray-600 mb-6">
-                            Ideal for growing teams and advanced application needs.
-                        </p>
-                        <div class="text-5xl font-extrabold text-purple-600 mb-6">
-                            $50<span class="text-xl font-medium text-gray-500">/month</span>
-                        </div>
-                        <ul class="text-left text-gray-700 space-y-3 mb-8">
-                            <li class="flex items-center">
-                                <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                All Starter Plan Features
-                            </li>
-                            <li class="flex items-center">
-                                <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                10 Live Web App Deployments
-                            </li>
-                            <li class="flex items-center">
-                                <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Unlimited Native Mobile App Builds
-                            </li>
-                            <li class="flex items-center">
-                                <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Unlimited Desktop Game Exports
-                            </li>
-                            <li class="flex items-center">
-                                <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Priority Support
-                            </li>
-                            <li class="flex items-center">
-                                <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Advanced Analytics
+                                Priority Support & Analytics
                             </li>
                         </ul>
                     </div>
@@ -223,31 +194,35 @@
                 </div>
 
                 <!-- Enterprise Plan Card -->
-                <div class="bg-white p-8 rounded-xl card-shadow card-border flex flex-col justify-between">
+                <div class="bg-[#0f0f1a] p-8 rounded-xl card-shadow flex flex-col justify-between">
                     <div>
-                        <h2 class="text-3xl font-bold text-gray-800 mb-4">Enterprise Plan</h2>
-                        <p class="text-gray-600 mb-6">
+                        <h2 class="text-3xl font-bold text-white mb-4">Enterprise</h2>
+                        <p class="text-gray-200 mb-6">
                             Tailored solutions for large organizations with extensive needs.
                         </p>
-                        <div class="text-5xl font-extrabold text-blue-600 mb-6">
+                        <div class="text-5xl font-extrabold text-blue-400 mb-6">
                             Custom Pricing
                         </div>
-                        <ul class="text-left text-gray-700 space-y-3 mb-8">
+                        <ul class="text-left text-gray-200 space-y-3 mb-8">
                             <li class="flex items-center">
                                 <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                                 All Pro Plan Features
                             </li>
                             <li class="flex items-center">
                                 <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Unlimited Live Web App Deployments
+                                Unlimited AI Prompts
                             </li>
                             <li class="flex items-center">
                                 <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Unlimited Native Mobile App Builds
+                                Unlimited Web Deployments
                             </li>
                             <li class="flex items-center">
                                 <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Unlimited Desktop Game Exports
+                                Unlimited Mobile App Builds
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Unlimited Desktop Exports
                             </li>
                             <li class="flex items-center">
                                 <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
@@ -269,36 +244,36 @@
                 </div>
 
             </div>
-            <p class="text-sm text-gray-500 mt-12">
-                *All paid plans include unlimited builds for Native Mobile Apps and Desktop Games. Specific pricing for Enterprise will be customized based on your organization's unique requirements.
+            <p class="text-sm text-gray-400 mt-12">
+                *All pricing is per project per month. Pro plan includes unlimited builds for Mobile and Desktop apps. Enterprise pricing will be customized based on your organization's unique requirements.
             </p>
         </div>
     </section>
     <!-- Call to Action Section (Reused from Homepage) -->
-    <section class="bg-indigo-700 text-white py-16 px-6 md:px-12 text-center rounded-t-3xl shadow-xl">
+    <section class="bg-[#5544FF] text-white py-16 px-6 md:px-12 text-center rounded-t-3xl shadow-2xl">
         <div class="container mx-auto max-w-3xl">
             <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Build Your Next Masterpiece?</h2>
             <p class="text-lg md:text-xl mb-8 opacity-90">
                 Join thousands of creators already bringing their ideas to life with Omia Studio.
             </p>
-            <a href="https://omia.pro/app" class="btn-primary text-white px-8 py-3 rounded-xl font-bold text-lg shadow-xl hover:shadow-2xl">
+            <a href="https://omia.pro/app" class="bg-white text-[#5544FF] px-8 py-3 rounded-xl font-bold text-lg shadow-xl hover:shadow-2xl hover:bg-gray-100">
                 Get Started Now
             </a>
         </div>
     </section>
 
     <!-- Footer (Reused from Homepage) -->
-    <footer id="contact" class="bg-gray-800 text-gray-300 py-10 px-6 md:px-12">
+    <footer id="contact" class="bg-[#000000] text-gray-300 py-10 px-6 md:px-12 shadow-inner">
         <div class="container mx-auto text-center">
             <div class="mb-6">
                 <span class="text-2xl font-bold text-white">Omia Studio</span>
             </div>
             <div class="flex flex-wrap justify-center space-x-6 mb-6">
-                <a href="index.html#features" class="hover:text-white">Features</a>
-                <a href="index.html#how-it-works" class="hover:text-white">How it Works</a>
-                <a href="pricing.html" class="hover:text-white">Pricing</a>
-                <a href="blog.html" class="hover:text-white">Blog</a>
-                <a href="support.html" class="hover:text-white">Support</a>
+                <a href="index.html#features" class="hover:text-[#5544FF]">Features</a>
+                <a href="index.html#how-it-works" class="hover:text-[#5544FF]">How it Works</a>
+                <a href="pricing.html" class="hover:text-[#5544FF]">Pricing</a>
+                <a href="blog.html" class="hover:text-[#5544FF]">Blog</a>
+                <a href="support.html" class="hover:text-[#5544FF]">Support</a>
             </div>
             <p class="text-sm">&copy; 2025 Omia Studio. All rights reserved.</p>
         </div>
