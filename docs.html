@@ -218,9 +218,9 @@
 <div id="content"></div>
 
 <script>
-  const markdown = `# 📘 Ginni Module Guide for OMIA Canvas
+  const markdown = `# 📘 Ginni Module Guide for OMIA Pages
 
-Welcome! This guide walks you through how to enhance your design elements—referred to as **widgets**—by using the \`ginni\` module within the OMIA Canvas code pane. You’ll learn how to interact with widgets, store data, handle events, and more.
+Welcome! This guide walks you through how to enhance your design elements—referred to as **widgets**—by using the \`ginni\` module within OMIA’s live pages code pane. You’ll learn how to interact with widgets, store data, handle events, and more.
 
 ---
 
@@ -232,7 +232,7 @@ First, import the \`ginni\` module:
 import ginni as g
 \`\`\`
 
-This gives you access to all the tools you need to control and interact with widgets on the canvas.
+This gives you access to all the tools you need to control and interact with widgets on the live page.
 
 ---
 
@@ -318,6 +318,24 @@ Show or hide a widget:
 
 \`\`\`python
 node.set_visibility(True)  # or False
+\`\`\`
+
+### Remove/Delete a Widget Permanently
+
+Delete (remove) a widget and free its resources from the live page:
+
+\`\`\`python
+node = g.GinNode("WIDGET_NAME")
+node.remove()
+\`\`\`
+
+### Scroll Widget Into View
+
+Ensure the page scrolls so the widget is visible:
+
+\`\`\`python
+node = g.GinNode("WIDGET_NAME")
+node.scroll_to_me()
 \`\`\`
 
 ---
@@ -629,7 +647,7 @@ The \`ginni\` module allows you to:
 * Visualize data through charts
 * Make simple HTTP requests
 
-Use this guide as your reference while building powerful, interactive experiences on the OMIA Canvas.
+Use this guide as your reference while building powerful, interactive experiences on OMIA live pages.
 `;
 
   // Utility: slugify text for ids
