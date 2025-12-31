@@ -354,6 +354,18 @@ img_url = node.get_img_src()
 node.set_img_src("https://example.com/image.jpg")
 \`\`\`
 
+### Set Stream Link
+
+Sets the stream link of a rect widget:
+
+\`\`\`python
+node = g.GinNode("RECT_ID")
+node.set_stream("https://example.com/stream")
+\`\`\`
+
+> **Important**:
+> The node that streams video must be a \`rect\` (rectangle) widget — not an image or text. Using image or text for streaming may lead to erratic behavior.
+
 ---
 
 ## 🖱️ Handling Events
