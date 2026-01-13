@@ -2,44 +2,64 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Google Sign-In Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="omialogo.png"/>
+  <title>Omia Studio – Google Sign-In</title>
+
+  <!-- Tailwind CSS and Inter font for consistent styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Google Identity Services -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
 
+  <!-- Shared utility styles to match main site -->
   <style>
-    body {
-      font-family: sans-serif;
-      padding: 40px;
+    body { font-family: 'Inter', sans-serif; background-color: #0a0a0f; color: #ffffff; }
+    .gradient-text {
+      background: linear-gradient(90deg, #5544FF 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    #output {
-      margin-top: 20px;
-      white-space: pre-wrap;
+    .card {
+      background-color: #0f0f1a;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      border-radius: 0.75rem;
     }
   </style>
 </head>
-<body>
-  <h1>Google Sign-In</h1>
+<body class="antialiased min-h-screen">
 
-  <!-- Google Sign-In button -->
-  <div
-    id="g_id_onload"
-    data-client_id="447762928895-cjgsq0g6sfkb3q068tqvqbqq5pbu3flc.apps.googleusercontent.com"
-    data-callback="handleCredentialResponse"
-    data-auto_prompt="false">
-  </div>
+  <!-- Content -->
+  <main class="container mx-auto px-6 md:px-12 py-10">
+    <section class="text-center mb-8">
+      <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-4">
+        <span class="gradient-text">Google Sign-In</span>
+      </h1>
+      <p class="text-gray-300">Sign in securely with your Google account.</p>
+    </section>
 
-  <div
-    class="g_id_signin"
-    data-type="standard"
-    data-size="large"
-    data-theme="outline"
-    data-text="sign_in_with"
-    data-shape="rectangular">
-  </div>
+    <section class="max-w-xl mx-auto card p-6">
+      <!-- Google Sign-In button setup -->
+      <div
+        id="g_id_onload"
+        data-client_id="447762928895-cjgsq0g6sfkb3q068tqvqbqq5pbu3flc.apps.googleusercontent.com"
+        data-callback="handleCredentialResponse"
+        data-auto_prompt="false">
+      </div>
 
-  <h3>JWT Credential</h3>
-  <div id="output"></div>
+      <div
+        class="g_id_signin"
+        data-type="standard"
+        data-size="large"
+        data-theme="outline"
+        data-text="sign_in_with"
+        data-shape="rectangular">
+      </div>
+
+      <div id="output" class="text-sm text-gray-200 bg-[#121223] rounded-md p-4 whitespace-pre-wrap"></div>
+    </section>
+  </main>
 <script type="module">
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
@@ -64,10 +84,9 @@
   const analytics = getAnalytics(app);
 </script>
     <script>
-        // Callback function to handle the credential response
-        function handleCredentialResponse(response) {
+      function handleCredentialResponse(response) {
         document.getElementById('output').textContent = 'JWT Credential: ' + response.credential;
-        }
+      }
     </script>
 </body>
 </html>
