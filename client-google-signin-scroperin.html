@@ -140,17 +140,13 @@
   }
 
   // Popup flow for the button
-  window.signInWithGooglePopup = async () => {
+  // Button triggers signInWithRedirect for consistency
+  window.signInWithGoogleRedirect = async () => {
     try {
       const provider = new GoogleAuthProvider();
-      const result = await signInWithPopup(auth, provider);
-      if (result && result.user) {
-        console.log('Google popup sign-in successful!', result.user.email);
-        await persistAndClose(result.user);
-        return;
-      }
+      await signInWithRedirect(auth, provider);
     } catch (e) {
-      console.error('Popup sign-in failed:', e);
+      console.error('Redirect sign-in failed:', e);
     }
   };
 </script>
@@ -160,8 +156,8 @@
       const googleBtn = document.getElementById('google-btn');
       if (googleBtn) {
         googleBtn.addEventListener('click', function() {
-          if (typeof window.signInWithGooglePopup === 'function') {
-            window.signInWithGooglePopup();
+          if (typeof window.signInWithGoogleRedirect === 'function') {
+            window.signInWithGoogleRedirect();
           }
         });
       }
