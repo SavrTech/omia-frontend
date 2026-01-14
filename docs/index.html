@@ -618,6 +618,26 @@ rect_widget.play_recording(media_data.url)
 
 ---
 
+### Google Login
+
+In case you need user credentials from google.
+
+\`\`\`python
+btn = g.GinNode('BTN_ID')
+async def login(event):
+  user_data = await g.google_login()
+  if user_data != None:
+    g.print(user_data.uid)
+    g.print(user_data.email)
+    g.print(user_data.user_name)
+    g.print(user_data.photo_url)
+    g.print(user_data.id_token)
+  
+btn.set_on_click(login)
+\`\`\`
+
+---
+
 ## 🌐 Making HTTP Requests
 
 The \`ginni\` module includes a simple method to make HTTP requests:

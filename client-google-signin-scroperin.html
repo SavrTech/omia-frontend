@@ -85,7 +85,7 @@
       localStorage.setItem('omigoogle_providerId', providerInfo.providerId || '');
       localStorage.setItem('omigoogle_providerEmail', providerInfo.email || '');
     }
-    try { window.close(); } catch {}
+    try { window.history.back(); } catch {}
   }
 
   // Popup flow for the button
@@ -126,5 +126,4 @@
 </script>
 </body>
 </html>
-
 
