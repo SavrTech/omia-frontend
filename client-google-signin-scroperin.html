@@ -88,14 +88,19 @@
 
   // Auto-trigger sign-in on initial load using redirect (works without user gesture)
   document.addEventListener('DOMContentLoaded', async () => {
-    const handled = await handleRedirectResult();
-    if (handled) return;
     if (!auth.currentUser) {
-      const attempted = sessionStorage.getItem('omi_google_redirect_attempted');
+      const attempted = sessionStorage.getItem('omi_google_popup_attempted');
       if (!attempted) {
-        sessionStorage.setItem('omi_google_redirect_attempted', '1');
+        sessionStorage.setItem('omi_google_popup_attempted', '1');
         const provider = new GoogleAuthProvider();
-        await signInWithRedirect(auth, provider);
+        try {
+          const result = await signInWithPopup(auth, provider);
+          if (result && result.user) {
+            await persistAndClose(result.user);
+          }
+        } catch (e) {
+          console.error('Popup sign-in failed:', e);
+        }
       }
     }
   });
@@ -174,12 +179,15 @@
 
   // Popup flow for the button
   // Button triggers signInWithRedirect for consistency
-  window.signInWithGoogleRedirect = async () => {
+  window.signInWithGooglePopup = async () => {
     try {
       const provider = new GoogleAuthProvider();
-      await signInWithRedirect(auth, provider);
+      const result = await signInWithPopup(auth, provider);
+      if (result && result.user) {
+        await persistAndClose(result.user);
+      }
     } catch (e) {
-      console.error('Redirect sign-in failed:', e);
+      console.error('Popup sign-in failed:', e);
     }
   };
 </script>
@@ -189,8 +197,8 @@
       const googleBtn = document.getElementById('google-btn');
       if (googleBtn) {
         googleBtn.addEventListener('click', function() {
-          if (typeof window.signInWithGoogleRedirect === 'function') {
-            window.signInWithGoogleRedirect();
+          if (typeof window.signInWithGooglePopup === 'function') {
+            window.signInWithGooglePopup();
           }
         });
       }
