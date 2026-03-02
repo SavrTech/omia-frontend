@@ -182,6 +182,9 @@
   window.signInWithGooglePopup = async () => {
     try {
       const provider = new GoogleAuthProvider();
+      provider.setCustomParameters({
+        prompt: 'select_account'
+      });
       const result = await signInWithPopup(auth, provider);
       if (result && result.user) {
         await persistAndClose(result.user);
@@ -190,9 +193,9 @@
       console.error('Popup sign-in failed:', e);
     }
   };
-</script>
+</script> 
 <script>
-    // Cancel button closes the window
+    // Cancel button closes the windowit 
     document.addEventListener('DOMContentLoaded', function() {
       const googleBtn = document.getElementById('google-btn');
       if (googleBtn) {
