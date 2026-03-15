@@ -44,6 +44,35 @@
         .card-border {
             background-color: #0f0f1a;
         }
+        .faq-item {
+            background-color: #0f0f1a;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+        .faq-question {
+            font-weight: 600;
+            color: #ffffff;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-answer {
+            margin-top: 0.75rem;
+            color: #d1d5db;
+            display: none;
+        }
+        .faq-answer.active {
+            display: block;
+        }
+        .faq-icon {
+            transition: transform 0.2s ease-in-out;
+        }
+        .faq-icon.rotate {
+            transform: rotate(180deg);
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -151,6 +180,10 @@
                                 <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                                 Testing & preview
                             </li>
+                            <li class="flex items-center">
+                                <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Live deployment
+                            </li>
 
                             <li class="flex items-center">
                                 <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
@@ -160,7 +193,6 @@
                                 <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                                 Gemini/Claude/GPT
                             </li>
-
                             <li class="flex items-center">
                                 <svg class="w-6 h-6 text-red-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                                 No custom domains
@@ -183,8 +215,8 @@
                         <div class="mb-6">
                             
                             <div>
-                                <div class="text-5xl font-extrabold text-purple-400">$5.99</div>
-                                <div class="text-sm font-medium text-gray-400">USD /project/mo</div>
+                                <div class="text-5xl font-extrabold text-purple-400">$25</div>
+                                <div class="text-sm font-medium text-gray-400"> /user/mo</div>
                             </div>
                         </div>
                         <ul class="text-left text-gray-200 space-y-3 mb-8">
@@ -192,26 +224,26 @@
                                 <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                                 All Free features
                             </li>
-
                             <li class="flex items-center">
                                 <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Live deployments
+                                100 tokens per user
                             </li>
+                            <li class="flex items-center">
+                                <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                OMIA Copilot
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Image generation
+                            </li>
+
                             <li class="flex items-center">
                                 <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                                 Live CI/CD
                             </li>
                             <li class="flex items-center">
                                 <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Unlimited mobile builds
-                            </li>
-                            <li class="flex items-center">
-                                <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                                 Unlimited exports
-                            </li>
-                            <li class="flex items-center">
-                                <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Custom domains
                             </li>
                             <li class="flex items-center">
                                 <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
@@ -238,7 +270,7 @@
                             Tailored for large organizations.
                         </p>
                         <div class="text-5xl font-extrabold text-blue-400 mb-6">
-                            Custom Pricing
+                            Custom
                         </div>
                         <ul class="text-left text-gray-200 space-y-3 mb-8">
                             <li class="flex items-center">
@@ -286,6 +318,78 @@
             </p>
         </div>
     </section>
+
+    <!-- FAQ Section -->
+    <section id="faq-section" class="py-16 px-6 md:px-12 bg-[#050508]">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-10 gradient-text">
+                Pricing FAQs
+            </h2>
+
+            <div class="space-y-4 text-left">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I deploy my project for free?</span>
+                        <svg class="w-6 h-6 text-gray-500 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="faq-answer">
+                        Yes. Free deployment means your project is available as a live web app that users can interact with. We support GitHub deployment and CI/CD.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I buy more AI credits?</span>
+                        <svg class="w-6 h-6 text-gray-500 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="faq-answer">
+                        Yes. You can always purchase additional credits separately at any time.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do I have to pay for projects?</span>
+                        <svg class="w-6 h-6 text-gray-500 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="faq-answer">
+                        No. You can create and keep an unlimited number of projects. Your projects are always available to you.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you train your AI on my free project's data?</span>
+                        <svg class="w-6 h-6 text-gray-500 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="faq-answer">
+                        No, we never access user's project data for any reason.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What if I want to build for mobile?</span>
+                        <svg class="w-6 h-6 text-gray-500 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="faq-answer">
+                        The optional $5 USD add-on is charged per project per month. This add-on includes unlimited mobile builds each month, plus live production servers for web apps with customizable domains. Live web servers on this add-on are auto-scalable, with effectively zero downtime.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How is Pro pricing charged?</span>
+                        <svg class="w-6 h-6 text-gray-500 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="faq-answer">
+                        Pro is charged at $25 per user per month.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Call to Action Section (Reused from Homepage) -->
     <section class="bg-[#5544FF] text-white py-16 px-6 md:px-12 text-center rounded-t-3xl shadow-2xl">
         <div class="container mx-auto max-w-3xl">
@@ -315,6 +419,22 @@
             <p class="text-sm">&copy; 2025 Omia Studio. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const answer = question.nextElementSibling;
+                    const icon = question.querySelector('.faq-icon');
+
+                    answer.classList.toggle('active');
+                    icon.classList.toggle('rotate');
+                });
+            });
+        });
+    </script>
 
 </body>
 </html>
