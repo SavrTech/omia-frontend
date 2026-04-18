@@ -4,9 +4,13 @@ One project. Every platform. Unparalleled smoothness on desktop.
 
 Hi {{recipient_name}},
 
-Omia now lets you design and code once, then move across macOS, Windows, mobile, and web from the same project with a faster local desktop app at the center of the workflow.
+Omia now lets you design and code once, then move across macOS, Windows, mobile, and web from the same project with a faster local desktop app at the center of the workflow. To continue using this same email address on desktop, trigger a password recovery flow first, even if you previously signed in with Google.
 
-The desktop experience is smoother, faster, more responsive, and built for serious work. Less browser drag. More control. More momentum. A stronger offline-capable workspace. That means unparalleled smoothness exactly where you build.
+We have gone ABOVE AND BEYOND to make the desktop experience smoother, faster, more responsive, and dependable for serious work. Less browser drag. More control. More momentum. A stronger offline-capable workspace designed to feel seamless and stable exactly where you build.
+
+And for everyone who experienced issues with the web app, we sincerely apologize.
+
+We remain committed to being the last app builder you need.
 
 Why you should move now
 - One project now drives macOS, Windows, mobile, and web from the same workflow
@@ -23,6 +27,7 @@ Read the guides
 
 Get the app now
 - Downloads: https://omia.pro/downloads.html
+- Check the FAQ on the downloads page for expected system prompts and warnings in the early release versions.
 
 Need help?
 - Support: https://omia.pro/support.html
