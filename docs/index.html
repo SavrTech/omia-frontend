@@ -240,16 +240,21 @@ This gives you access to all the tools you need to control and interact with wid
 
 You can store and retrieve data locally on the device or browser. This is useful for maintaining state across sessions.
 
+Both `save_item` and `get_item` are asynchronous and should be awaited.
+
 ### Save an Item
 
 \`\`\`python
-g.save_item("KEY", "VALUE")
+async def save_value():
+  await g.save_item("KEY", "VALUE")
 \`\`\`
 
 ### Retrieve an Item
 
 \`\`\`python
-value = g.get_item("KEY")
+async def load_value():
+  value = await g.get_item("KEY")
+  g.print(value)
 \`\`\`
 
 ---
@@ -614,28 +619,6 @@ You can play a recording of in a sufficiently large enough rect with \`rect_widg
 \`\`\`python
 rect_widget = g.GinNode('BTN_ID')
 rect_widget.play_recording(media_data.url)
-\`\`\`
-
----
-
-### Google Login
-
-In case you need user credentials from Google.
-
-> 🔔 **Note:** the built-in \`g.google_login()\` helper currently only works on web projects. It is not supported inside mobile or desktop application builds.
-
-\`\`\`python
-btn = g.GinNode('BTN_ID')
-async def login(event):
-  user_data = await g.google_login()
-  if user_data is not None:
-    g.print(user_data.uid)
-    g.print(user_data.email)
-    g.print(user_data.user_name)
-    g.print(user_data.photo_url)
-    g.print(user_data.id_token)
-
-btn.set_on_click(login)
 \`\`\`
 
 ---
