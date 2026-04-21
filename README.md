@@ -149,13 +149,17 @@ If this messaging changes, review it across:
 - duplicated blog articles for path and content parity
 - email templates for tone and operational instructions
 
-## Deployment Notes
+## Proprietary Handling
 
-This repository is structured like a static hosting target.
+This repository contains proprietary Omia Studio website content and release-facing assets.
+
+Do not add public deployment or redistribution instructions to this repository.
+
+Publishing and release handling for this site are internal-only workflows and are intentionally not documented here.
 
 There is no framework-specific output directory, no bundler config, and no package manifest in the current repo. Changes are made directly in source HTML files, so correctness depends on careful manual updates to links, images, and duplicated pages.
 
-## Recommended Pre-Deploy Checks
+## Recommended QA Checks
 
 - open the edited pages in a browser
 - verify relative asset paths resolve correctly
