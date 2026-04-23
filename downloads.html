@@ -163,9 +163,9 @@
     <div class="container mx-auto max-w-4xl">
       <div class="rounded-2xl border border-amber-400/30 bg-amber-400/10 px-6 py-5 text-left shadow-lg">
         <p class="text-xs font-semibold uppercase tracking-[0.2em] text-amber-300">Important Update</p>
-        <h2 class="mt-2 text-2xl font-bold text-white">Web app support retires April 21, 2026</h2>
+        <h2 class="mt-2 text-2xl font-bold text-white">Web app support has ended</h2>
         <p class="mt-2 text-sm md:text-base text-gray-200">
-          We're retiring support for the Omia Studio web app on April 21, 2026. Use the desktop app on macOS or Windows for the fully supported experience going forward.
+          Omia Studio's web app has been officially retired. Please use the desktop app on macOS or Windows for the supported experience going forward.
         </p>
       </div>
     </div>
@@ -182,7 +182,7 @@
         Use one Omia Studio project to design, code, and manage macOS, Windows, mobile, and web outputs from the same workflow.
       </p>
       <p class="text-sm text-gray-400 max-w-2xl mx-auto">
-        Support for the browser-based Omia Studio editor ends on April 21, 2026. The desktop app is the supported workspace, while your profile continues to power builds and outputs across all supported platforms.
+        Omia Studio's web app has been officially retired. The desktop app is the supported workspace, while your profile continues to power builds and outputs across all supported platforms.
       </p>
       <p class="mt-4 text-sm text-gray-300 max-w-2xl mx-auto">
         These direct downloads are our early release channel: you get the latest supported desktop builds first, with faster iteration ahead of App Store packaging.
@@ -266,7 +266,7 @@
           </div>
 
           <p class="text-gray-300 text-sm mb-8 leading-relaxed">
-            This is the zipped Flutter executable build for Windows. Extract the archive, open the folder, and run <code class="bg-[#1a1a2e] px-1.5 py-0.5 rounded text-purple-300">omiadesktop.exe</code>.
+            This is the zipped Flutter executable build for Windows. Extract the archive, open the folder, and run <code class="bg-[#1a1a2e] px-1.5 py-0.5 rounded text-purple-300">omiadesktop.exe</code>. If the app fails on launch, your system may be missing the Microsoft Visual C++ Redistributable. Download the official distributable package here: <a href="https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170#latest-supported-redistributable-version" target="_blank" rel="noopener" class="text-[#a78bfa] hover:underline">Latest supported Visual C++ Redistributable</a>.
           </p>
 
           <div class="mt-auto space-y-3">
@@ -335,6 +335,7 @@
         </div>
         <div class="faq-answer">
           <p>Yes — this is expected behaviour for the ZIP download. The Windows SmartScreen warning appears because this is the <strong class="text-white">raw Flutter executable archive</strong>, distributed without an embedded code-signing certificate. This is the same format we provide when you trigger a Windows build from within the IDE.</p>
+          <p class="mt-2">The Windows app also depends on the <strong class="text-white">Microsoft Visual C++ Redistributable</strong>. Some Windows installations already have it because it is bundled through other software or OS updates. If Omia fails immediately on launch, download and install the official distributable package from Microsoft here: <a href="https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170#latest-supported-redistributable-version" target="_blank" rel="noopener" class="text-[#a78bfa] hover:underline">Latest supported Visual C++ Redistributable</a>.</p>
           <p class="mt-2">If you would like extra peace of mind, you are welcome to run a targeted antivirus scan (e.g. ClamAV, Windows Defender, Malwarebytes) on the extracted files before launching.</p>
           <p class="mt-2">To bypass the warning entirely, click <em class="text-gray-200">"More info" → "Run anyway"</em> on the SmartScreen dialog. We are actively publishing to the <strong class="text-white">Microsoft Store</strong>, which will provide the necessary certificate inside an embedded MSIX package and eliminate this prompt once the store version is live.</p>
         </div>
@@ -388,7 +389,7 @@
     <div class="container mx-auto max-w-3xl">
       <h2 class="text-3xl md:text-4xl font-bold mb-6">Move to the Desktop App</h2>
       <p class="text-lg md:text-xl mb-8 opacity-90">
-        Web app support retires on April 21, 2026. Download Omia Studio for the supported macOS or Windows experience.
+        Omia Studio's web app has been officially retired. Download Omia Studio for the supported macOS or Windows experience.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="#download-options" class="bg-white text-[#5544FF] px-8 py-3 rounded-xl font-bold text-lg shadow-xl hover:shadow-2xl hover:bg-gray-100">
