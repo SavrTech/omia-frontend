@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17749969277"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17749969277');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="omialogo.png"/>
+  <title>Omia Studio - Download Archive</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0a0a0f;
+      color: #ffffff;
+    }
+    .gradient-text {
+      background: linear-gradient(90deg, #5544FF 0%, #764ba2 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .archive-card {
+      background-color: #0f0f1a;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+    .archive-link {
+      background: linear-gradient(90deg, #5544FF 0%, #764ba2 100%);
+      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+    .archive-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(85, 68, 255, 0.35);
+    }
+    .mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
+    .mobile-menu.open {
+      max-height: 500px;
+      transition: max-height 0.5s ease-in;
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <header class="bg-[#0f0f1a] shadow-lg py-4 px-6 md:px-12">
+    <nav class="container mx-auto flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <a href="index.html">
+          <img src="omialogo.png" alt="Omia Studio Logo" class="h-40 w-auto rounded-lg">
+        </a>
+        <span class="text-2xl font-bold text-white">Omia Studio</span>
+      </div>
+
+      <div class="hidden md:flex space-x-6">
+        <a href="index.html#features" class="text-gray-200 hover:text-[#5544FF] font-medium">Features</a>
+        <a href="index.html#how-it-works" class="text-gray-200 hover:text-[#5544FF] font-medium">How it Works</a>
+        <a href="docs.html" class="text-gray-200 hover:text-[#5544FF] font-medium">Docs</a>
+        <a href="downloads.html" class="text-white font-medium">Downloads</a>
+        <a href="index.html#contact" class="text-gray-200 hover:text-[#5544FF] font-medium">Contact</a>
+      </div>
+
+      <a href="downloads.html" class="hidden md:block text-white border border-white/15 px-6 py-2 rounded-lg font-semibold hover:border-[#5544FF] hover:text-[#c4b5fd] transition-colors">
+        Back to Latest Release
+      </a>
+
+      <button id="menu-btn" class="md:hidden text-gray-200 focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </nav>
+
+    <div id="mobile-menu" class="mobile-menu md:hidden mt-4 space-y-4 px-6">
+      <a href="index.html#features" class="block text-gray-200 hover:text-[#5544FF] font-medium">Features</a>
+      <a href="index.html#how-it-works" class="block text-gray-200 hover:text-[#5544FF] font-medium">How it Works</a>
+      <a href="docs.html" class="block text-gray-200 hover:text-[#5544FF] font-medium">Docs</a>
+      <a href="downloads.html" class="block text-white font-medium">Downloads</a>
+      <a href="index.html#contact" class="block text-gray-200 hover:text-[#5544FF] font-medium">Contact</a>
+      <a href="downloads.html" class="block text-white border border-white/15 px-6 py-2 rounded-lg font-semibold hover:border-[#5544FF] hover:text-[#c4b5fd] transition-colors text-center">
+        Back to Latest Release
+      </a>
+    </div>
+  </header>
+
+  <section class="bg-[#0a0a0f] py-20 px-6 md:px-12">
+    <div class="container mx-auto max-w-4xl">
+      <p class="text-sm uppercase tracking-[0.28em] text-[#7c82a5] font-semibold mb-4 text-center">Previous Releases</p>
+      <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-6 text-center">
+        Download <span class="gradient-text">Archive</span>
+      </h1>
+      <p class="text-base md:text-lg text-gray-300 max-w-3xl mx-auto text-center leading-relaxed">
+        These older direct-download builds are kept here for rollback or compatibility checks. For the current recommended release, return to the main downloads page.
+      </p>
+
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="archive-card rounded-2xl p-8">
+          <p class="text-sm uppercase tracking-[0.18em] text-[#a78bfa] font-semibold">macOS Archive</p>
+          <h2 class="mt-3 text-2xl font-bold text-white">Previous DMG</h2>
+          <p class="mt-3 text-sm text-gray-400">Former early release build kept for reference and fallback testing.</p>
+          <div class="mt-6">
+            <a href="https://github.com/SavrTech/omia-frontend/releases/download/macbuild/OMIA.dmg" download class="archive-link w-full flex items-center justify-center gap-2 text-white py-3 rounded-xl font-semibold shadow-md">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+              Download Previous Mac Build
+            </a>
+          </div>
+        </div>
+
+        <div class="archive-card rounded-2xl p-8">
+          <p class="text-sm uppercase tracking-[0.18em] text-[#a78bfa] font-semibold">Windows Archive</p>
+          <h2 class="mt-3 text-2xl font-bold text-white">Previous ZIP</h2>
+          <p class="mt-3 text-sm text-gray-400">Former early release build kept for reference and fallback testing.</p>
+          <div class="mt-6">
+            <a href="https://github.com/SavrTech/omia-frontend/releases/download/windowsbuild/Release.zip" download class="archive-link w-full flex items-center justify-center gap-2 text-white py-3 rounded-xl font-semibold shadow-md">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+              Download Previous Windows Build
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-10 rounded-2xl border border-white/10 bg-[#0d0d16] px-6 py-5 text-sm text-gray-400">
+        Archived builds may not include the latest fixes for canvas load failures and text focus behaviour. Use the current release unless you specifically need an older package.
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact" class="bg-[#000000] text-gray-300 py-10 px-6 md:px-12 shadow-inner">
+    <div class="container mx-auto text-center">
+      <div class="mb-6">
+        <span class="text-2xl font-bold text-white">Omia Studio</span>
+      </div>
+      <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-6">
+        <a href="index.html#features" class="hover:text-[#5544FF]">Features</a>
+        <a href="index.html#how-it-works" class="hover:text-[#5544FF]">How it Works</a>
+        <a href="pricing.html" class="hover:text-[#5544FF]">Pricing</a>
+        <a href="downloads.html" class="hover:text-[#5544FF]">Downloads</a>
+        <a href="blog.html" class="hover:text-[#5544FF]">Blog</a>
+        <a href="support.html" class="hover:text-[#5544FF]">Support</a>
+      </div>
+      <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-6 text-sm">
+        <a href="privacy.html" class="hover:text-[#5544FF]">Privacy Policy</a>
+        <a href="terms.html" class="hover:text-[#5544FF]">Terms &amp; Conditions</a>
+      </div>
+      <p class="text-sm">&copy; 2025 Omia Studio. All rights reserved.</p>
+      <span class="text-xs text-gray-400">Omia Studio is operated and protected by SAVR Technologies.</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('menu-btn').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>
