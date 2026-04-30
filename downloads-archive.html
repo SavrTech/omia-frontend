@@ -33,6 +33,10 @@
       border: 1px solid rgba(255, 255, 255, 0.08);
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
     }
+    .version-item {
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.02);
+    }
     .changelog-card {
       background: rgba(15, 15, 26, 0.9);
       border: 1px solid rgba(167, 139, 250, 0.22);
@@ -119,25 +123,43 @@
       <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
         <div class="archive-card rounded-2xl p-8">
           <p class="text-sm uppercase tracking-[0.18em] text-[#a78bfa] font-semibold">macOS Archive</p>
-          <h2 class="mt-3 text-2xl font-bold text-white">Previous DMG</h2>
-          <p class="mt-3 text-sm text-gray-400">Former early release build kept for reference and fallback testing.</p>
-          <div class="mt-6">
-            <a href="https://github.com/SavrTech/omia-frontend/releases/download/macbuild/OMIA.dmg" download class="archive-link w-full flex items-center justify-center gap-2 text-white py-3 rounded-xl font-semibold shadow-md">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-              Download Previous Mac Build
-            </a>
+          <h2 class="mt-3 text-2xl font-bold text-white">Archived Versions</h2>
+          <p class="mt-3 text-sm text-gray-400">Older macOS builds retained for rollback and compatibility checks.</p>
+          <div class="mt-6 space-y-4">
+            <div class="version-item rounded-xl p-4">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <p class="text-sm font-semibold text-white">Version: macbuild</p>
+                  <p class="mt-1 text-xs text-gray-400">Legacy early release DMG before the latest focus fixes.</p>
+                </div>
+                <span class="text-xs uppercase tracking-[0.16em] text-[#a78bfa]">DMG</span>
+              </div>
+              <a href="https://github.com/SavrTech/omia-frontend/releases/download/macbuild/OMIA.dmg" download class="archive-link mt-4 w-full flex items-center justify-center gap-2 text-white py-3 rounded-xl font-semibold shadow-md">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                Download macbuild
+              </a>
+            </div>
           </div>
         </div>
 
         <div class="archive-card rounded-2xl p-8">
           <p class="text-sm uppercase tracking-[0.18em] text-[#a78bfa] font-semibold">Windows Archive</p>
-          <h2 class="mt-3 text-2xl font-bold text-white">Previous ZIP</h2>
-          <p class="mt-3 text-sm text-gray-400">Former early release build kept for reference and fallback testing.</p>
-          <div class="mt-6">
-            <a href="https://github.com/SavrTech/omia-frontend/releases/download/windowsbuild/Release.zip" download class="archive-link w-full flex items-center justify-center gap-2 text-white py-3 rounded-xl font-semibold shadow-md">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-              Download Previous Windows Build
-            </a>
+          <h2 class="mt-3 text-2xl font-bold text-white">Archived Versions</h2>
+          <p class="mt-3 text-sm text-gray-400">Older Windows builds retained for rollback and compatibility checks.</p>
+          <div class="mt-6 space-y-4">
+            <div class="version-item rounded-xl p-4">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <p class="text-sm font-semibold text-white">Version: windowsbuild</p>
+                  <p class="mt-1 text-xs text-gray-400">Legacy early release ZIP before the latest focus fixes.</p>
+                </div>
+                <span class="text-xs uppercase tracking-[0.16em] text-[#a78bfa]">ZIP</span>
+              </div>
+              <a href="https://github.com/SavrTech/omia-frontend/releases/download/windowsbuild/Release.zip" download class="archive-link mt-4 w-full flex items-center justify-center gap-2 text-white py-3 rounded-xl font-semibold shadow-md">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                Download windowsbuild
+              </a>
+            </div>
           </div>
         </div>
       </div>
