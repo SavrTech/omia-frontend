@@ -7,10 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/png" href="omialogo.png" />
   <title>Import and Export OMIA Studio Projects Between Machines or Versions</title>
-  <meta name="description" content="Export a Project ZIP from the preview page, then import it into OMIA Studio on another machine or app version to continue working on the same functional design." />
+  <meta name="description" content="Use the Export ZIP option on the preview page, then import the ZIP into OMIA Studio on another machine or app version to continue working on the same functional design." />
   <link rel="canonical" href="/migrating-from-omia-web-to-local-omia-ide.html" />
   <meta property="og:title" content="Import and Export OMIA Studio Projects Between Machines or Versions" />
-  <meta property="og:description" content="Move a functional design between machines or app versions by exporting a Project ZIP from preview and importing it into another OMIA Studio install." />
+  <meta property="og:description" content="Move a functional design between machines or app versions by using Export ZIP in preview and importing that ZIP into another OMIA Studio install." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="/migrating-from-omia-web-to-local-omia-ide.html" />
   <meta property="og:image" content="/blog/article_imgs/migration.png" />
@@ -66,7 +66,7 @@
         <p class="text-xs font-semibold uppercase tracking-[0.2em] text-amber-300">Project Transfer Guide</p>
         <h2 class="mt-2 text-2xl font-bold text-white">Move functional designs without rebuilding</h2>
         <p class="mt-2 text-sm md:text-base text-gray-200">
-          Use the Project ZIP flow to move an OMIA Studio project from one machine to another, or from one app version to a newer one, while keeping the same working design state.
+          Use the Export ZIP flow to move an OMIA Studio project from one machine to another, or from one app version to a newer one, while keeping the same working design state.
         </p>
       </div>
     </div>
@@ -86,35 +86,22 @@
 
       <div class="info-card rounded-2xl p-6 mb-8">
         <p class="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-200">Fast Track</p>
-        <p class="mt-3 text-lg text-white">Export a Project ZIP from preview. Import that ZIP on the destination machine or app version. Your functional design moves over ready for the next round of editing.</p>
+        <p class="mt-3 text-lg text-white">Use Export ZIP in preview, import the ZIP on the destination machine or app version, and continue from the same functional design state.</p>
       </div>
 
       <div class="prose">
-        <p>If you need to continue a functional design on another machine or inside a different version of OMIA Studio, you do not need to rebuild it by hand. OMIA Studio lets you export the current project state as a Project ZIP and import that same package wherever you want to keep working.</p>
+        <p>To move a functional design between machines or OMIA Studio versions, use <strong>Export ZIP</strong> on the current project and import that same file on the target setup. The flow is simple, explicit, and built for continuing work without rebuilding the project by hand.</p>
 
-        <p>The transfer flow is the same whether you are switching computers, handing a project to another workstation, or moving into a newer app release. Export from preview, import from the dashboard, and pick up from the latest saved project state.</p>
+        <h2>Export from preview</h2>
+        <p>Open the project on the source machine, go to its preview, open the dropdown menu, and choose <strong>Export ZIP</strong>. When the ZIP is ready, save it locally. That exported file is the handoff package you will move to the next machine or app version.</p>
+        <img src="blog/article_imgs/new_migration.png" alt="Preview menu showing the Export ZIP option" class="rounded-lg my-6 w-full h-auto" />
 
-        <h2>Start from the project preview</h2>
-        <p>Open OMIA Studio on the source machine or in the app version that currently holds the project you want to move, then open that project.</p>
-        <p>From the project preview, open the dropdown menu and choose <strong>Project ZIP</strong>. That tells OMIA Studio to prepare an export package for the full working project state.</p>
-        <p>Once the ZIP is ready, download or save it locally. This is the file you will move to the other machine or import into the other app version.</p>
-        <img src="blog/article_imgs/exportpreview.jpg" alt="Preview menu showing the Project ZIP export option" class="rounded-lg my-6 w-full h-auto" />
+        <h2>Import on the destination setup</h2>
+        <p>On the destination machine or app version, open OMIA Studio and go to the dashboard. Click the large plus button, choose <strong>Import ZIP</strong>, and select the exported ZIP. OMIA Studio will bring the project into the local workspace so you can continue from that saved state.</p>
+        <img src="blog/article_imgs/importbtndash.jpg" alt="Desktop dashboard showing the Import ZIP option" class="rounded-lg my-6 w-full h-auto" />
 
-        <h2>Import the ZIP on the destination setup</h2>
-        <p>Open OMIA Studio on the destination machine or the app version you want to continue in. From the desktop dashboard, click the large plus button to reveal the import options.</p>
-        <p>Choose <strong>Import ZIP</strong>, select the exported Project ZIP, and let OMIA Studio bring the project into the local workspace.</p>
-        <img src="blog/article_imgs/importbtndash.jpg" alt="Desktop dashboard showing the Import Project ZIP option" class="rounded-lg my-6 w-full h-auto" />
-
-        <h2>Moving between machines</h2>
-        <p>If you are transferring between two computers, copy the exported ZIP to the destination machine first. AirDrop, cloud storage, external drives, or any secure internal transfer method will work.</p>
-        <p>After the file is on the destination machine, import it from the OMIA Studio dashboard and continue editing there.</p>
-
-        <h2>Moving between app versions</h2>
-        <p>If you are upgrading or switching app versions, use the same export and import flow. Export the Project ZIP from the version that currently opens the project, then import it into the newer version.</p>
-        <p>This keeps the handoff explicit and avoids relying on background sync between installs.</p>
-
-        <h2>What happens after import</h2>
-        <p>Once the import completes, your functional design and its project files should open inside OMIA Studio ready for continued work. You are not starting from scratch. You are reopening the latest exported project state.</p>
+        <h2>What carries over</h2>
+        <p>After the import completes, the project opens inside OMIA Studio ready for continued work. You are reopening the latest exported project state, not starting from scratch.</p>
         <img src="blog/article_imgs/importedproject.jpg" alt="Imported OMIA project opened in the desktop IDE" class="rounded-lg my-6 w-full h-auto" />
         <ul>
           <li>Your latest functional design layout comes over into the destination workspace.</li>
@@ -122,14 +109,8 @@
           <li>The imported project is ready for preview, iteration, and further development in the new environment.</li>
         </ul>
 
-        <h2>Important transfer note</h2>
-        <p>Projects do not automatically appear on another machine or in another install just because you sign in with the same account. The transfer happens when you explicitly export a Project ZIP and import that ZIP where you want the project to live next.</p>
-
-        <h2>Best practice before you transfer</h2>
-        <p>Export after your latest meaningful changes so the ZIP reflects the exact state you want to continue from. If multiple teammates or machines are involved, treat the ZIP as the handoff artifact for that point in time.</p>
-
-        <h2>One flow, multiple handoff cases</h2>
-        <p>Whether you are moving to a new laptop, a shared workstation, or a newer OMIA Studio release, the workflow stays simple. Export a Project ZIP from preview, import it on the target setup, and continue building without losing momentum.</p>
+        <h2>Keep the transfer explicit</h2>
+        <p>Projects do not automatically appear on another machine or in another app install just because you sign in with the same account. If you are moving to a new laptop, handing the project to another workstation, or opening it in a newer OMIA Studio version, create a fresh ZIP with <strong>Export ZIP</strong> after your latest meaningful changes and import that file on the target setup.</p>
       </div>
 
       <div class="mt-10 flex items-center justify-between">
