@@ -6,11 +6,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/png" href="../omialogo.png" />
-  <title>Move Your Project from OMIA Web to the Local OMIA IDE</title>
-  <meta name="description" content="Export your latest OMIA web project build from the preview page and import it into the local OMIA IDE for faster, more interactive, and more secure desktop development." />
+  <title>Import and Export OMIA Studio Projects Between Machines or Versions</title>
+  <meta name="description" content="Export a Project ZIP from the preview page, then import it into OMIA Studio on another machine or app version to continue working on the same functional design." />
   <link rel="canonical" href="/blog/migrating-from-omia-web-to-local-omia-ide.html" />
-  <meta property="og:title" content="Move Your Project from OMIA Web to the Local OMIA IDE" />
-  <meta property="og:description" content="Export the latest version of your OMIA web project, import the zip into the desktop dashboard, and keep building locally with speed, interactivity, and control." />
+  <meta property="og:title" content="Import and Export OMIA Studio Projects Between Machines or Versions" />
+  <meta property="og:description" content="Move a functional design between machines or app versions by exporting a Project ZIP from preview and importing it into another OMIA Studio install." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="/blog/migrating-from-omia-web-to-local-omia-ide.html" />
   <meta property="og:image" content="/blog/article_imgs/migration.png" />
@@ -63,10 +63,10 @@
   <section class="px-6 md:px-12 pt-10 bg-[#0a0a0f]">
     <div class="container mx-auto max-w-4xl">
       <div class="rounded-2xl border border-amber-400/30 bg-amber-400/10 px-6 py-5 text-left shadow-lg">
-        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-amber-300">Important Update</p>
-        <h2 class="mt-2 text-2xl font-bold text-white">Web app support has ended</h2>
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-amber-300">Project Transfer Guide</p>
+        <h2 class="mt-2 text-2xl font-bold text-white">Move functional designs without rebuilding</h2>
         <p class="mt-2 text-sm md:text-base text-gray-200">
-          Omia Studio's web app has been officially retired. The local OMIA IDE on macOS and Windows is the supported experience going forward.
+          Use the Project ZIP flow to move an OMIA Studio project from one machine to another, or from one app version to a newer one, while keeping the same working design state.
         </p>
       </div>
     </div>
@@ -74,62 +74,62 @@
 
   <section class="py-12 px-6 md:px-12 text-center">
     <div class="container mx-auto max-w-4xl">
-      <p class="mb-4 text-sm font-semibold uppercase tracking-[0.25em] text-amber-300">Migration Guide</p>
-      <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-4 gradient-text">Move Your Project from OMIA Web to the Local OMIA IDE</h1>
-      <p class="text-gray-300">April 16, 2026 • 4 min read</p>
+      <p class="mb-4 text-sm font-semibold uppercase tracking-[0.25em] text-amber-300">Import and Export Guide</p>
+      <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-4 gradient-text">Import and Export OMIA Studio Projects Between Machines or Versions</h1>
+      <p class="text-gray-300">May 1, 2026 • 4 min read</p>
     </div>
   </section>
 
   <main class="py-8 px-6 md:px-12">
     <article class="container mx-auto max-w-3xl article-card p-8 rounded-xl shadow-lg">
-      <img src="article_imgs/migration.png" alt="OMIA migration guide cover image" class="rounded-lg mb-6 w-full h-auto" />
+      <img src="article_imgs/migration.png" alt="OMIA project transfer guide cover image" class="rounded-lg mb-6 w-full h-auto" />
 
       <div class="info-card rounded-2xl p-6 mb-8">
         <p class="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-200">Fast Track</p>
-        <p class="mt-3 text-lg text-white">Export from the web project preview. Import into the desktop dashboard. Keep your latest build moving with more speed, deeper interactivity, and tighter local control.</p>
+        <p class="mt-3 text-lg text-white">Export a Project ZIP from preview. Import that ZIP on the destination machine or app version. Your functional design moves over ready for the next round of editing.</p>
       </div>
 
       <div class="prose">
-        <p>Your web project does not have to stop when web support retires. If you have been building in OMIA on the web, you can move the latest version of your project into the local OMIA IDE in minutes and continue working with a faster, more responsive, and more secure local workflow.</p>
+        <p>If you need to continue a functional design on another machine or inside a different version of OMIA Studio, you do not need to rebuild it by hand. OMIA Studio lets you export the current project state as a Project ZIP and import that same package wherever you want to keep working.</p>
 
-        <p>This migration flow is built for momentum. Export the latest build from your project preview, bring the zip into the desktop dashboard, and your design and code come across ready to run.</p>
+        <p>The transfer flow is the same whether you are switching computers, handing a project to another workstation, or moving into a newer app release. Export from preview, import from the dashboard, and pick up from the latest saved project state.</p>
 
-        <h2>Start from the web project preview</h2>
-        <p>Open the web app at <a href="https://omia.pro/app" target="_blank" rel="noopener">omia.pro/app</a>, then open the project you want to move.</p>
-        <p>Open the preview page for the web project you want to move. On that preview page, open the dropdown menu, choose <strong>Export</strong>, and then trigger the build with the arrow button.</p>
-        <p>The exported zip should be ready to download in a few moments. Once it appears, download it locally and keep it handy for the import step.</p>
-        <img src="article_imgs/exportpreview.jpg" alt="Export options in the OMIA web preview" class="rounded-lg my-6 w-full h-auto" />
+        <h2>Start from the project preview</h2>
+        <p>Open OMIA Studio on the source machine or in the app version that currently holds the project you want to move, then open that project.</p>
+        <p>From the project preview, open the dropdown menu and choose <strong>Project ZIP</strong>. That tells OMIA Studio to prepare an export package for the full working project state.</p>
+        <p>Once the ZIP is ready, download or save it locally. This is the file you will move to the other machine or import into the other app version.</p>
+        <img src="article_imgs/exportpreview.jpg" alt="Preview menu showing the Project ZIP export option" class="rounded-lg my-6 w-full h-auto" />
 
-        <h2>Import the zip into the local desktop dashboard</h2>
-        <p>Launch the local OMIA IDE and open your desktop dashboard. Click the large plus button. That reveals a dropdown with the <strong>Import ZIP</strong> option.</p>
-        <p>Choose <strong>Import ZIP</strong>, select the exported zip from your web build, and let OMIA pull the project into your local workspace.</p>
+        <h2>Import the ZIP on the destination setup</h2>
+        <p>Open OMIA Studio on the destination machine or the app version you want to continue in. From the desktop dashboard, click the large plus button to reveal the import options.</p>
+        <p>Choose <strong>Import ZIP</strong>, select the exported Project ZIP, and let OMIA Studio bring the project into the local workspace.</p>
         <img src="article_imgs/importbtndash.jpg" alt="Desktop dashboard showing the Import Project ZIP option" class="rounded-lg my-6 w-full h-auto" />
 
-        <h2>Using your previous email on desktop</h2>
-        <p>If you want to continue in the local app with the same email you used on the web app, sign in with that same email address. If your previous authentication was done with Google and you need a desktop password, use the password reset flow from the desktop app.</p>
-        <p>Request a password reset in the desktop app, open the reset link sent to your email, and set a password there. Check your spam folder if the email does not show up right away.</p>
+        <h2>Moving between machines</h2>
+        <p>If you are transferring between two computers, copy the exported ZIP to the destination machine first. AirDrop, cloud storage, external drives, or any secure internal transfer method will work.</p>
+        <p>After the file is on the destination machine, import it from the OMIA Studio dashboard and continue editing there.</p>
 
-        <h2>Important sync note</h2>
-        <p>Logging into the desktop app does not automatically download your existing web projects to your local machine. Projects only come into the local app when you explicitly export them from the web experience and import the zip into the desktop dashboard.</p>
+        <h2>Moving between app versions</h2>
+        <p>If you are upgrading or switching app versions, use the same export and import flow. Export the Project ZIP from the version that currently opens the project, then import it into the newer version.</p>
+        <p>This keeps the handoff explicit and avoids relying on background sync between installs.</p>
 
         <h2>What happens after import</h2>
-        <p>Once the import completes, your designs and code should be live and interactive inside the local OMIA IDE. You are not starting over. You are picking up the latest exported state of the project and continuing with the desktop workflow.</p>
+        <p>Once the import completes, your functional design and its project files should open inside OMIA Studio ready for continued work. You are not starting from scratch. You are reopening the latest exported project state.</p>
         <img src="article_imgs/importedproject.jpg" alt="Imported OMIA project opened in the desktop IDE" class="rounded-lg my-6 w-full h-auto" />
         <ul>
-          <li>Your latest exported design layout comes over into the local workspace.</li>
-          <li>Your latest exported code comes over with it.</li>
-          <li>The imported project is ready for local iteration, preview, and supported desktop development.</li>
+          <li>Your latest functional design layout comes over into the destination workspace.</li>
+          <li>The project files move with the export so you can continue from the same working state.</li>
+          <li>The imported project is ready for preview, iteration, and further development in the new environment.</li>
         </ul>
 
-        <h2>Important limitation</h2>
-        <p>Only the most recent commit is exported in this migration flow. Full commit history is not included in the exported zip, so plan this as a handoff of the latest project state rather than a repository history transfer.</p>
+        <h2>Important transfer note</h2>
+        <p>Projects do not automatically appear on another machine or in another install just because you sign in with the same account. The transfer happens when you explicitly export a Project ZIP and import that ZIP where you want the project to live next.</p>
 
-        <h2>Why move now</h2>
-        <p>The local OMIA IDE is where the platform opens up. You get sharper responsiveness, stronger local control, and a development environment built for sustained work instead of browser constraints.</p>
-        <p>Move over and experience unparalleled speed, richer interactivity, and secure control over your next phase of development.</p>
+        <h2>Best practice before you transfer</h2>
+        <p>Export after your latest meaningful changes so the ZIP reflects the exact state you want to continue from. If multiple teammates or machines are involved, treat the ZIP as the handoff artifact for that point in time.</p>
 
-        <h2>One clean move, full momentum</h2>
-        <p>If your project matters, move it where it can run faster and grow with fewer limits. Export the latest build from the web preview, import it into the local OMIA IDE, and keep building without losing your stride.</p>
+        <h2>One flow, multiple handoff cases</h2>
+        <p>Whether you are moving to a new laptop, a shared workstation, or a newer OMIA Studio release, the workflow stays simple. Export a Project ZIP from preview, import it on the target setup, and continue building without losing momentum.</p>
       </div>
 
       <div class="mt-10 flex items-center justify-between">
