@@ -37,10 +37,6 @@
       border: 1px solid rgba(255, 255, 255, 0.08);
       background: rgba(255, 255, 255, 0.02);
     }
-    .changelog-card {
-      background: rgba(15, 15, 26, 0.9);
-      border: 1px solid rgba(167, 139, 250, 0.22);
-    }
     .archive-link {
       background: linear-gradient(90deg, #5544FF 0%, #764ba2 100%);
       transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
@@ -109,23 +105,36 @@
         Download <span class="gradient-text">Archive</span>
       </h1>
       <p class="text-base md:text-lg text-gray-300 max-w-3xl mx-auto text-center leading-relaxed">
-        These older direct-download builds are kept here for rollback or compatibility checks. For the current recommended release, return to the main downloads page.
-      </p>
-
-      <div class="changelog-card mt-8 rounded-2xl px-6 py-5 max-w-2xl mx-auto text-left shadow-lg">
-        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#c4b5fd]">Release Changelog</p>
-        <ul class="mt-3 space-y-2 text-sm text-gray-200">
-          <li>Release v5: screen persistence fix.</li>
-          <li>Release v4: fixed memory leaks.</li>
-        </ul>
+        These versioned direct-download builds are kept here for rollback, compatibility checks, and release-history reference. For the current recommended release, return to the main downloads page.
       </div>
 
       <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
         <div class="archive-card rounded-2xl p-8">
           <p class="text-sm uppercase tracking-[0.18em] text-[#a78bfa] font-semibold">macOS Archive</p>
-          <h2 class="mt-3 text-2xl font-bold text-white">Archived Versions</h2>
-          <p class="mt-3 text-sm text-gray-400">Older macOS builds retained for rollback and compatibility checks.</p>
+          <h2 class="mt-3 text-2xl font-bold text-white">Version History</h2>
+          <p class="mt-3 text-sm text-gray-400">macOS direct-download builds retained for rollback and compatibility checks.</p>
           <div class="mt-6 space-y-4">
+            <div class="version-item rounded-xl p-4">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <p class="text-sm font-semibold text-white">Version: mac-v6</p>
+                  <p class="mt-1 text-xs text-gray-400">Current macOS early release for the desktop channel.</p>
+                </div>
+                <span class="text-xs uppercase tracking-[0.16em] text-[#a78bfa]">DMG</span>
+              </div>
+              <div class="mt-4 rounded-lg border border-white/10 bg-[#111120] px-4 py-3">
+                <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#c4b5fd]">Release v6 Notes</p>
+                <ul class="mt-2 space-y-1 text-xs text-gray-300 list-disc list-inside">
+                  <li>Fixed app storage persistence</li>
+                  <li>Fixed canvas editor border controls</li>
+                  <li>Fixed stalled page refresh</li>
+                </ul>
+              </div>
+              <a href="https://github.com/SavrTech/omia-frontend/releases/download/mac-v6/OMIA.dmg" download class="archive-link mt-4 w-full flex items-center justify-center gap-2 text-white py-3 rounded-xl font-semibold shadow-md">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                Download mac-v6
+              </a>
+            </div>
             <div class="version-item rounded-xl p-4">
               <div class="flex items-start justify-between gap-4">
                 <div>
@@ -183,9 +192,30 @@
 
         <div class="archive-card rounded-2xl p-8">
           <p class="text-sm uppercase tracking-[0.18em] text-[#a78bfa] font-semibold">Windows Archive</p>
-          <h2 class="mt-3 text-2xl font-bold text-white">Archived Versions</h2>
-          <p class="mt-3 text-sm text-gray-400">Older Windows builds retained for rollback and compatibility checks.</p>
+          <h2 class="mt-3 text-2xl font-bold text-white">Version History</h2>
+          <p class="mt-3 text-sm text-gray-400">Windows direct-download builds retained for rollback and compatibility checks.</p>
           <div class="mt-6 space-y-4">
+            <div class="version-item rounded-xl p-4">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <p class="text-sm font-semibold text-white">Version: windows-v6</p>
+                  <p class="mt-1 text-xs text-gray-400">Current Windows early release for the desktop channel.</p>
+                </div>
+                <span class="text-xs uppercase tracking-[0.16em] text-[#a78bfa]">ZIP</span>
+              </div>
+              <div class="mt-4 rounded-lg border border-white/10 bg-[#111120] px-4 py-3">
+                <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#c4b5fd]">Release v6 Notes</p>
+                <ul class="mt-2 space-y-1 text-xs text-gray-300 list-disc list-inside">
+                  <li>Fixed app storage persistence</li>
+                  <li>Fixed canvas editor border controls</li>
+                  <li>Fixed stalled page refresh</li>
+                </ul>
+              </div>
+              <a href="https://github.com/SavrTech/omia-frontend/releases/download/windows-v6/WinRelease6.zip" download class="archive-link mt-4 w-full flex items-center justify-center gap-2 text-white py-3 rounded-xl font-semibold shadow-md">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                Download windows-v6
+              </a>
+            </div>
             <div class="version-item rounded-xl p-4">
               <div class="flex items-start justify-between gap-4">
                 <div>
