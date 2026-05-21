@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test Docs</title>
+  <style>
+    body { font-family: Arial; margin: 20px; }
+    #content { border: 1px solid #ccc; padding: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Testing Marked.js</h1>
+  <div id="content"></div>
+  
+  <script src="libs/marked.min.js"></script>
+  <script>
+    const md = `# Hello
+This is a test.`;
+    const html = marked.parse(md);
+    document.getElementById('content').innerHTML = html;
+  </script>
+</body>
+</html>

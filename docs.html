@@ -5,7 +5,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17749969277"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag(){dataLayer.push(arguments);} 
   gtag('js', new Date());
 
   gtag('config', 'AW-17749969277');
@@ -200,10 +200,10 @@
   }
 </style>
 <!-- Marked.js -->
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="../libs/marked.min.js"></script>
 <!-- Highlight.js -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/dracula.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<link rel="stylesheet" href="../libs/dracula.min.css" />
+<script src="../libs/highlight.min.js"></script>
 <script>
   hljs.configure({ignoreUnescapedHTML: true});
 </script>
@@ -240,7 +240,7 @@ This gives you access to all the tools you need to control and interact with wid
 
 You can store and retrieve data locally on the device or browser. This is useful for maintaining state across sessions.
 
-Both `save_item` and `get_item` are asynchronous and should be awaited.
+Both \`save_item\` and \`get_item\` are asynchronous and should be awaited.
 
 ### Save an Item
 
@@ -637,7 +637,7 @@ result = await g.make_request(url, header, body, method="GET")
 
   \`\`\`json
   {
-    "status": 200,
+    "status": "success",
     "status_code": statusCode,
     "data": { ... }
   }
@@ -663,7 +663,7 @@ Ace Editor
 Copyright (c) 2010, Ajax.org B.V.
 Licensed under the MIT License.
 
-Full license text: [Third-Party Notices](THIRD_PARTY_NOTICES.html)
+Full license text: [Third-Party Notices](../THIRD_PARTY_NOTICES.html)
 
 ---
 
@@ -799,24 +799,36 @@ Use this guide as your reference while building powerful, interactive experience
   const contentContainer = document.getElementById('content');
   const sidebar = document.getElementById('sidebar');
   const resizer = document.getElementById('resizer');
-  contentContainer.appendChild(contentDiv);
+   if (contentContainer && sidebar && resizer) {
+    contentContainer.appendChild(contentDiv);
+  }
 
   highlightCodeBlocks(contentContainer);
 
   const tocContainer = document.getElementById('toc');
-  renderTOC(headings, tocContainer);
+  if (tocContainer) {
+    renderTOC(headings, tocContainer);
+  }
 
   const searchInput = document.getElementById('searchInput');
-  searchInput.addEventListener('input', () => {
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
     const val = searchInput.value.trim();
     renderTOC(headings, tocContainer, val);
-  });
+    });
+  }                                                               
+
+            
 
   // Draggable sidebar width handling
   const minSidebarWidth = 260;
   const maxSidebarWidth = 640;
   const savedWidth = parseInt(localStorage.getItem('docsSidebarWidth') || '0', 10);
   if (!Number.isNaN(savedWidth) && savedWidth > 0) {
+    sidebar.style.width = Math.min(maxSidebarWidth, Math.max(minSidebarWidth, savedWidth)) + 'px';
+  }
+
+  if (sidebar) {
     sidebar.style.width = Math.min(maxSidebarWidth, Math.max(minSidebarWidth, savedWidth)) + 'px';
   }
 
@@ -843,6 +855,8 @@ Use this guide as your reference while building powerful, interactive experience
   }
 
   resizer.addEventListener('mousedown', (e) => {
+      if (resizer) {
+        resizer.addEventListener('mousedown', (e) => {
     dragging = true;
     startX = e.clientX;
     startWidth = sidebar.getBoundingClientRect().width;
@@ -850,7 +864,8 @@ Use this guide as your reference while building powerful, interactive experience
     document.addEventListener('mousemove', onMove);
     document.addEventListener('mouseup', onUp);
     e.preventDefault();
-  });
+    });
+  }});
 </script>
 
 </body>
