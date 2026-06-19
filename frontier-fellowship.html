@@ -548,7 +548,15 @@
         }
 
         function getProgramFee(country) {
-            return country === 'Nigeria' ? '20,000 Naira' : '19.99 USD';
+            if (country === 'Nigeria') {
+                return '20,000 Naira';
+            }
+
+            if (country === 'Canada' || country === 'United States') {
+                return '28.99 USD';
+            }
+
+            return '19.99 USD';
         }
 
         function updateCountrySpecificFields() {
