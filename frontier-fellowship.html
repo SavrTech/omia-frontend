@@ -488,7 +488,7 @@
                         Proceed
                     </button>
                     <div id="feeDisplay" class="hidden w-full rounded-xl border border-emerald-300/30 bg-emerald-500/15 px-5 py-4 text-center">
-                        <p class="text-xs uppercase tracking-[0.12em] text-emerald-200 font-semibold">Program Fee</p>
+                        <p id="feeLabel" class="text-xs uppercase tracking-[0.12em] text-emerald-200 font-semibold">Program Fee</p>
                         <p id="feeAmount" class="text-2xl md:text-3xl font-extrabold text-white mt-1"></p>
                         <p class="text-sm text-emerald-100 mt-3">
                             By continuing, you agree to the
@@ -525,6 +525,7 @@
         const proceedBtn = document.getElementById('proceedBtn');
         const submitBtn = document.getElementById('submitBtn');
         const feeDisplay = document.getElementById('feeDisplay');
+        const feeLabel = document.getElementById('feeLabel');
         const feeAmount = document.getElementById('feeAmount');
         const nameField = document.getElementById('name');
         const emailField = document.getElementById('email');
@@ -552,26 +553,42 @@
             latestEstimate = null;
             submitBtn.classList.add('hidden');
             feeDisplay.classList.add('hidden');
+            feeLabel.textContent = 'Program Fee';
             feeAmount.textContent = '';
         }
 
-        function formatEstimateAmount(estimate) {
+        function getDisplayedEstimateAmount(estimate, country) {
             const amount = Number(estimate.final_amount);
+
+            if (!Number.isFinite(amount)) {
+                return amount;
+            }
+
+            if (country === 'Nigeria') {
+                return Math.round((amount / 12) / 100) * 100;
+            }
+
+            return amount;
+        }
+
+        function formatEstimateAmount(estimate, country) {
+            const amount = getDisplayedEstimateAmount(estimate, country);
+            const isNigeria = country === 'Nigeria';
 
             if (Number.isFinite(amount) && typeof estimate.currency === 'string' && estimate.currency.trim()) {
                 try {
                     return new Intl.NumberFormat(undefined, {
                         style: 'currency',
                         currency: estimate.currency,
-                        minimumFractionDigits: 2,
-                        maximumFractionDigits: 2
+                        minimumFractionDigits: isNigeria ? 0 : 2,
+                        maximumFractionDigits: isNigeria ? 0 : 2
                     }).format(amount);
                 } catch (error) {
                     console.error(error);
                 }
             }
 
-            return `${estimate.final_amount} ${estimate.currency}`;
+            return `${amount} ${estimate.currency}`;
         }
 
         async function requestEstimate(country, referralCode) {
@@ -640,7 +657,8 @@
 
             try {
                 latestEstimate = await requestEstimate(region, referralCode);
-                feeAmount.textContent = formatEstimateAmount(latestEstimate);
+                feeLabel.textContent = region === 'Nigeria' ? 'Monthly Program Fee' : 'Program Fee';
+                feeAmount.textContent = formatEstimateAmount(latestEstimate, region);
                 feeDisplay.classList.remove('hidden');
                 setStatus('If this works for you, click Submit Application to continue.', 'notice');
                 hasProceeded = true;
@@ -689,11 +707,12 @@
                 return;
             }
 
-            const fee = formatEstimateAmount(latestEstimate);
+            const fee = formatEstimateAmount(latestEstimate, country);
+            const feeLineLabel = isNigeria ? 'Monthly Program Fee' : 'Program Fee';
             const description = isNigeria
                 ? [
                     `Track: ${track}`,
-                    `Program Fee: ${fee}`,
+                    `${feeLineLabel}: ${fee}`,
                     latestEstimate.referral_code_applied ? `Referral Code Applied: ${latestEstimate.referral_code_applied}` : '',
                     `Swag Color: ${swagColor}`,
                     `Swag Size: ${swagSize}`,
@@ -701,7 +720,7 @@
                 ].filter(Boolean).join('\n')
                 : [
                     `Track: ${track}`,
-                    `Program Fee: ${fee}`,
+                    `${feeLineLabel}: ${fee}`,
                     latestEstimate.referral_code_applied ? `Referral Code Applied: ${latestEstimate.referral_code_applied}` : '',
                     venture ? `Referee: ${venture}` : ''
                 ].filter(Boolean).join('\n');
